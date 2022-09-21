@@ -1,64 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title >CHALLENGE</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CHALLENGE</title>
 </head>
+
 <body>
+
 	<BODY BGCOLOR="#E4E0EC"></BODY>
-	
-	<h1 style="color:rgb(86, 56, 86)"><CENTER>CHALLENGE 2</CENTER></h1>
+
+	<h1 style="color:rgb(86, 56, 86)">
+		<CENTER>CHALLENGE 2</CENTER>
+	</h1>
 	<br>
 	<br>
-	<h1  style="color:rgb(124, 101, 177);">DOCTOR</h1>
+	<h1 style="color:rgb(124, 101, 177);">DOCTOR</h1>
 	<div>
 		<p>
-			ID <input type="number" id="id" placeholder="insert your id">
-			SPECIALTY <input type="text" id="specialty" placeholder="insert your specialty">
-			GRADUATE YEAR <input type="number" id="graduate_year" placeholder="insert your graduate_year">
+			ID <input type="number" id="idDoc" placeholder="Insert your id">>
+			SPECIALTY <input type="text" id="specialty" placeholder="Insert your specialty">
+			GRADUATE YEAR <input type="number" id="graduate_year" placeholder="Insert your graduate_year"></p>
 		<p>
-			DEPARTMENT ID <input type="number" id="department_id" placeholder="insert your department_id">
-			FULL NAME <input type="text" id="name" placeholder="insert your full name"></p>
-	</div>	
-	<button onclick="traerInformacion()">Consultar</button>
-	<button onclick="guardarInformacion()">Guardar</button>
-	<button onclick="editarInformacion()">Actualizar</button>
-	<div id="resultado"></div>
+			DEPARTMENT ID <input type="number" id="department_id" placeholder="Insert your department_id">
+			FULL NAME <input type="text" id="nameDoc" placeholder="Insert your full name"></p>
+	</div>
+	<button onclick="mostrarInformacionDoc()">Consultar</button>
+	<button onclick="agregarInformacionDoc()">Guardar</button>
+	<button onclick="actualizarInformacionDoc()">Actualizar</button>
+	<div id="resultadoDoc">
+	</div>
 	<br>
 	<br>
 	<h1 style="color:rgb(124, 101, 177);">CLIENT</h1>
 	<div>
 		<p>
-			ID <input type="number" id="id" placeholder="Insert your id">
-			FULL NAME <input type="text" id="name" placeholder="Insert your full name">
-			EMAIL <input type="text" id="email" placeholder="Insert your email">
-			AGE <input type="number" id="age" placeholder="Insert your age">
+			ID <input type="number" id="idCli" placeholder="Insert your id">
+			FULL NAME <input type="text" id="nameCli" name="name" placeholder="Insert your full name">
+			EMAIL <input type="email" id="emailCli" placeholder="Insert your email">
+			AGE <input type="number" id="ageCli" placeholder="Insert your age">
 		</p>
 	</div>
-	<button onclick="traerInformacion()">Consultar</button>
-	<button onclick="guardarInformacion()">Guardar</button>
-	<button onclick="editarInformacion()">Actualizar</button>
-	<div id="resultado2">
-	</div>
-	
+	<button onclick="mostrarInformacionCli()">Consultar</button>
+	<button onclick="agregarInformacionCli()">Guardar</button>
+	<button onclick="actualizarInformacionCli()">Actualizar</button>
+	<div id="resultadoCli"></div>
 	<br>
 	<br>
 	<h1 style="color:rgb(124, 101, 177);">MESSAGE</h1>
 	<div>
 		<p>
-			ID <input type="number" id="id" placeholder="Insert your id">
-			FULL NAME <input type="text" id="name" placeholder="Insert your full name">
-			EMAIL <input type="text" id="email" placeholder="Insert your email">
-			AGE <input type="number" id="age" placeholder="Insert your age">
+			ID <input type="number" id="idMes" placeholder="Insert your id">
+			MESSAGE <input type="text" id="messagetext" placeholder="Insert your message text">
 		</p>
 	</div>
-	<button onclick="traerInformacion()">Consultar</button>
-	<button onclick="guardarInformacion()">Guardar</button>
-	<button onclick="editarInformacion()">Actualizar</button>
-	<div id="resultado3"></div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script type="text/javascript" src="js/misFunciones.js"></script>
-</body>
-</html>
+	<button onclick="mostrarInformacionMes()">Consultar</button>
+	<button onclick="agregarInformacionMes()">Guardar</button>
+	<button onclick="actualizarInformacionMes()">Actualizar</button>
+	<div id="resultadoMes"></div>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript" src="js/Doctors.js"></script>
+	<script type="text/javascript" src="js/Client.js"></script>
+	<script type="text/javascript" src="js/Message.js"></script>
+</body>
+
+</html>
