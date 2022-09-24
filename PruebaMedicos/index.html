@@ -11,24 +11,27 @@
 
 	<BODY BGCOLOR="#E4E0EC"></BODY>
 
-	<h1 style="color:rgb(86, 56, 86)">
+	<h1 style="color:#563856">
 		<CENTER>CHALLENGE 2</CENTER>
 	</h1>
 	<br>
 	<br>
-	<h1 style="color:rgb(124, 101, 177);">DOCTOR</h1>
+	<h1 style="color:rgb(125, 102, 178);">DOCTOR</h1>
 	<div>
 		<p>
-			ID <input type="number" id="idDoc" placeholder="Insert your id">>
+			ID <input type="number" id="idDoc" placeholder="Insert your id">
 			SPECIALTY <input type="text" id="specialty" placeholder="Insert your specialty">
 			GRADUATE YEAR <input type="number" id="graduate_year" placeholder="Insert your graduate_year"></p>
 		<p>
 			DEPARTMENT ID <input type="number" id="department_id" placeholder="Insert your department_id">
 			FULL NAME <input type="text" id="nameDoc" placeholder="Insert your full name"></p>
 	</div>
-	<button onclick="mostrarInformacionDoc()">Consultar</button>
-	<button onclick="agregarInformacionDoc()">Guardar</button>
-	<button onclick="actualizarInformacionDoc()">Actualizar</button>
+	<button onclick="mostrarInformacionDoc()"
+		style="background-color:#7c65b1; border-color:#563856; color:white;">Consultar</button>
+	<button onclick="agregarInformacionDoc()"
+		style="background-color:#7c65b1; border-color:#563856; color:white;">Guardar</button>
+	<button onclick="actualizarInformacionDoc()"
+		style="background-color:#7c65b1; border-color:#563856; color:white;">Actualizar</button>
 	<div id="resultadoDoc">
 	</div>
 	<br>
@@ -42,9 +45,12 @@
 			AGE <input type="number" id="ageCli" placeholder="Insert your age">
 		</p>
 	</div>
-	<button onclick="mostrarInformacionCli()">Consultar</button>
-	<button onclick="agregarInformacionCli()">Guardar</button>
-	<button onclick="actualizarInformacionCli()">Actualizar</button>
+	<button onclick="mostrarInformacionCli()"
+		style="background-color:#7c65b1; border-color:#563856; color:white;">Consultar</button>
+	<button onclick="agregarInformacionCli()"
+		style="background-color:#7c65b1; border-color:#563856; color:white;">Guardar</button>
+	<button onclick="actualizarInformacionCli()"
+		style="background-color:#7c65b1; border-color:#563856; color:white;">Actualizar</button>
 	<div id="resultadoCli"></div>
 	<br>
 	<br>
@@ -55,9 +61,12 @@
 			MESSAGE <input type="text" id="messagetext" placeholder="Insert your message text">
 		</p>
 	</div>
-	<button onclick="mostrarInformacionMes()">Consultar</button>
-	<button onclick="agregarInformacionMes()">Guardar</button>
-	<button onclick="actualizarInformacionMes()">Actualizar</button>
+	<button onclick="mostrarInformacionMes()"
+		style="background-color:#7c65b1; border-color:#563856; color:white;">Consultar</button>
+	<button onclick="agregarInformacionMes()"
+		style="background-color:#7c65b1; border-color:#563856; color:white;">Guardar</button>
+	<button onclick="actualizarInformacionMes()"
+		style="background-color:#7c65b1; border-color:#563856; color:white;">Actualizar</button>
 	<div id="resultadoMes"></div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

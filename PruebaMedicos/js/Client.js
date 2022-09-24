@@ -8,28 +8,28 @@ function mostrarInformacionCli() {
         }, error: function (e) {
             console.log(e);
             alert("Algo salió mal");
+        }, error: function (e) {
+            console.log(e);
+            alert("Algo salió mal");
         }
     });
 }
 function tablaRespuestaCli(items) {
-    let myTableCli="<table BORDER CELLPADDING=2 BORDERCOLOR='#7c65b1'><th scope='col'> ID </th><th> FULL NAME </th><th> EMAIL </th><th> AGE </th>";
-    for(let i=0;i<items.length;i++){
-        myTableCli+="<tr>";
-        myTableCli+="<td>"+items[i].id+"</td>";
-        myTableCli+="<td>"+items[i].name+"</td>";
-        myTableCli+="<td>"+items[i].email+"</td>";
-        myTableCli+="<td>"+items[i].age+"</td>";
-        myTableCli+="<td> <button onclick='finishActuCli("+items[i].id+")'>Editar</button></td>";
-        myTableCli+="<td> <button onclick='borrarInformacionCli("+items[i].id+")'>Borrar</button></td>";
-        myTableCli+="</tr>";
+    let myTableCli = `<table BORDER CELLPADDING=2 BORDERCOLOR='#7c65b1'><th scope='col'> ID </th><th> FULL NAME </th><th> EMAIL </th><th> AGE </th>`;
+    for (let i = 0; i < items.length; i++) {
+        myTableCli += `<tr>`;
+        myTableCli += `<td>${items[i].id}</td>`;
+        myTableCli += `<td>${items[i].name}</td>`;
+        myTableCli += `<td>${items[i].email}</td>`;
+        myTableCli += `<td>${items[i].age}</td>`;
+        myTableCli += `<td> <button onclick="finishActuCli( ${items[i].id}, '${items[i].name}', '${items[i].email}', ${items[i].age} )" style="background-color:#7c65b1; border-color:#563856; color:white;">Editar</button></td>`;
+        myTableCli += `<td> <button onclick="borrarInformacionCli(${items[i].id})" style="background-color:#7c65b1; border-color:#563856; color:white;">Borrar</button></td>`;
+        myTableCli += `</tr>`;
     }
     $("#resultadoCli").append(myTableCli);
-    myTableCli="</table>";
+    myTableCli = `</table>`;
 }
 
-function finishActuCli(id) {
-    $("#idCli").val(id);
-}
 function agregarInformacionCli() {
     $.ajax({
         type: "POST",
@@ -48,14 +48,16 @@ function agregarInformacionCli() {
         $("#emailCli").val("");
         $("#ageCli").val("");
         mostrarInformacionCli();
-        alert("Elementos Guardados Client")//imprimimos respuesta
+        alert("Elementos de cliente agregados");//imprimimos respuesta
     }).fail(function (e) {
         alert("Algo salió mal");
     });
 }
-function finishActuCli(id, name) {
+function finishActuCli(id, name, email, age) {
     $("#idCli").val(id);
     $("#nameCli").val(name);
+    $("#emailCli").val(email);
+    $("#ageCli").val(age);
 }
 function actualizarInformacionCli() {
     $.ajax({
@@ -75,7 +77,7 @@ function actualizarInformacionCli() {
         $("#emailCli").val("");
         $("#ageCli").val("");
         mostrarInformacionCli();
-        alert("Elementos Actualizados")//imprimimos respuesta
+        alert("Elementos de cliente actualizados");//imprimimos respuesta
     }).fail(function (e) {
         console.log(e);
         alert("Algo salió mal");
@@ -89,7 +91,7 @@ function borrarInformacionCli(id) {
         contentType: "application/json",
         success: function (data) {
             $("#resultadoCli").empty();
-            alert("Elementos se han eliminado")//imprimimos respuesta
+            alert("Elementos de cliente se han eliminado");//imprimimos respuesta
         }, error: function (e) {
             console.log(e);
             alert("Algo salió mal");
