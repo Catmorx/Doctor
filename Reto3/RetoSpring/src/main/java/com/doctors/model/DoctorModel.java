@@ -9,24 +9,30 @@ public class DoctorModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String specialty;
     private String name;
-    private String email;
-    private Integer age;
+    private Integer graduate_year;
+    private String description;
+    private Integer department;
 
     public DoctorModel() {
     }
 
-    public DoctorModel(String name, String email, Integer age) {
+    public DoctorModel(Integer id, String specialty, String name, Integer graduate_year, String description, Integer department) {
+        this.id = id;
+        this.specialty = specialty;
         this.name = name;
-        this.email = email;
-        this.age = age;
+        this.graduate_year = graduate_year;
+        this.description = description;
+        this.department = department;
     }
 
-    public DoctorModel(Integer id, String name, String email, Integer age) {
-        this.id = id;
+    public DoctorModel(String specialty, String name, Integer graduate_year, String description, Integer department) {
+        this.specialty = specialty;
         this.name = name;
-        this.email = email;
-        this.age = age;
+        this.graduate_year = graduate_year;
+        this.description = description;
+        this.department = department;
     }
 
     public Integer getId() {
@@ -37,6 +43,14 @@ public class DoctorModel implements Serializable {
         this.id = id;
     }
 
+    public String getSpecialty() {
+        return specialty;
+    }
+
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
+    }
+
     public String getName() {
         return name;
     }
@@ -45,29 +59,27 @@ public class DoctorModel implements Serializable {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public Integer getGraduate_year() {
+        return graduate_year;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setGraduate_year(Integer graduate_year) {
+        this.graduate_year = graduate_year;
     }
 
-    public Integer getAge() {
-        return age;
+    public String getDescription() {
+        return description;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "DoctorModel{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", age=" + age +
-                '}';
+    public Integer getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Integer department) {
+        this.department = department;
     }
 }
