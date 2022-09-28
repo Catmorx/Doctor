@@ -35,3 +35,4 @@ public class DoctorService {
         return doctorRepository.updateDoctor(doctorModel);
     }
 }
+
