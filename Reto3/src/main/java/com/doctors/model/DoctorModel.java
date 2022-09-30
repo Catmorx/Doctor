@@ -9,8 +9,14 @@ public class DoctorModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name= "specialty", nullable = false, length = 45)
     private String specialty;
+
+    @Column(name= "name", nullable = false, length = 45)
     private String name;
+
+    @Column(name= "graduate_year", nullable = false, length = 4)
     private Integer graduate_year;
     private String description;
     private Integer department;
