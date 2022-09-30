@@ -19,12 +19,15 @@
 	<h1 style="color:rgb(125, 102, 178);">DOCTOR</h1>
 	<div>
 		<p>
-			ID <input type="number" id="idDoc" placeholder="Insert your id">
-			SPECIALTY <input type="text" id="specialty" placeholder="Insert your specialty">
-			GRADUATE YEAR <input type="number" id="graduate_year" placeholder="Insert your graduate_year"></p>
-		<p>
-			DEPARTMENT ID <input type="number" id="department_id" placeholder="Insert your department_id">
-			FULL NAME <input type="text" id="nameDoc" placeholder="Insert your full name"></p>
+				ID <input type="number" id="idDoc" placeholder="Insert your id" >
+				SPECIALTY <select id="specialty"></select>
+				FULL NAME <input type="text" id="nameDoc" placeholder="Insert your full name" maxlength="45">
+				</p>
+			<p>
+				GRADUATE YEAR <input type="date" id="graduate_year" placeholder="Insert your graduate_year" >
+				DESCRIPTION <input type="text" id="description" placeholder="Insert your description">
+				<!-- DEPARTMENT ID <input type="number" id="department_id" placeholder="Insert your department_id"> -->
+				</p>
 	</div>
 	<button onclick="mostrarInformacionDoc()"
 		style="background-color:#7c65b1; border-color:#563856; color:white;">Consultar</button>
@@ -73,6 +76,7 @@
 	<script type="text/javascript" src="js/Doctors.js"></script>
 	<script type="text/javascript" src="js/Client.js"></script>
 	<script type="text/javascript" src="js/Message.js"></script>
+	<script type="text/javascript" src="js/Specialty.js"></script>
 </body>
 
 </html>
