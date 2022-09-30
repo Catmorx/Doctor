@@ -29,7 +29,20 @@ function tablaRespuestaCli(items) {
     $("#resultadoCli").append(myTableCli);
     myTableCli = `</table>`;
 }
-
+//$("#id").is(":checked"
+// $("#id").click(function(){
+//     if($("#id").is(":checked")){
+//     console.log("Aquí pasa algo")
+//     }
+//     })
+// $("#id").click(function(){
+//     if($("#id").is(":checked")){
+//     $("#formClientes").show();
+//     $("#formAdmin").hide();
+//     }
+//     })
+    
+        
 function agregarInformacionCli() {
     $.ajax({
         type: "POST",
