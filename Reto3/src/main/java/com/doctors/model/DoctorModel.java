@@ -10,35 +10,28 @@ public class DoctorModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name= "specialty", nullable = false, length = 45)
-    private String specialty;
-
+    //@Column(name= "specialty", nullable = false, length = 45)
+    //private String specialty;
+    @Column(name= "year", nullable = false, length = 4)
+    private Integer year;
     @Column(name= "name", nullable = false, length = 45)
     private String name;
-
-    @Column(name= "graduate_year", nullable = false, length = 4)
-    private Integer graduate_year;
     private String description;
-    private Integer department;
 
     public DoctorModel() {
     }
 
-    public DoctorModel(Integer id, String specialty, String name, Integer graduate_year, String description, Integer department) {
+    public DoctorModel(Integer id, Integer year, String name, String description) {
         this.id = id;
-        this.specialty = specialty;
+        this.year = year;
         this.name = name;
-        this.graduate_year = graduate_year;
         this.description = description;
-        this.department = department;
     }
 
-    public DoctorModel(String specialty, String name, Integer graduate_year, String description, Integer department) {
-        this.specialty = specialty;
+    public DoctorModel(Integer year, String name, String description) {
+        this.year = year;
         this.name = name;
-        this.graduate_year = graduate_year;
         this.description = description;
-        this.department = department;
     }
 
     public Integer getId() {
@@ -49,12 +42,12 @@ public class DoctorModel implements Serializable {
         this.id = id;
     }
 
-    public String getSpecialty() {
-        return specialty;
+    public Integer getYear() {
+        return year;
     }
 
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
+    public void setYear(Integer year) {
+        this.year = year;
     }
 
     public String getName() {
@@ -65,27 +58,11 @@ public class DoctorModel implements Serializable {
         this.name = name;
     }
 
-    public Integer getGraduate_year() {
-        return graduate_year;
-    }
-
-    public void setGraduate_year(Integer graduate_year) {
-        this.graduate_year = graduate_year;
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Integer getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Integer department) {
-        this.department = department;
     }
 }

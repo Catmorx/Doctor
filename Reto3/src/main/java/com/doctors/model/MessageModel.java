@@ -8,58 +8,40 @@ import java.io.Serializable;
 public class MessageModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idMessage;
 
-    @Column(name = "message", nullable = false, length = 250)
-    private String message;
+    @Column(name = "messageText", nullable = false, length = 250)
+    private String messageText;
 
-    @Column(name = "iddoctor", nullable = false, length = 250)
-    private Integer iddoctor;
+    //@Column(name = "iddoctor", nullable = false, length = 250) RELACION FK
+    //private Integer iddoctor;
+
 
     public MessageModel() {
     }
 
-    public MessageModel(String message, Integer idDoctor) {
-        this.message = message;
-        this.iddoctor = idDoctor;
+    public Integer getIdMessage() {
+        return idMessage;
     }
 
-    public MessageModel(Integer id, String message, Integer idDoctor) {
-        this.id = id;
-        this.message = message;
-        this.iddoctor = idDoctor;
+    public void setIdMessage(Integer idMessage) {
+        this.idMessage = idMessage;
     }
 
-    public Integer getId() {
-        return id;
+    public String getMessageText() {
+        return messageText;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setMessageText(String messageText) {
+        this.messageText = messageText;
     }
 
-    public String getMessage() {
-        return message;
+    public MessageModel(Integer idMessage, String messageText) {
+        this.idMessage = idMessage;
+        this.messageText = messageText;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public Integer getIdDoctor() {
-        return iddoctor;
-    }
-
-    public void setIdDoctor(Integer idDoctor) {
-        this.iddoctor = idDoctor;
-    }
-
-    @Override
-    public String toString() {
-        return "MessageModel{" +
-                "id=" + id +
-                ", message='" + message + '\'' +
-                ", idDoctor=" + iddoctor +
-                '}';
+    public MessageModel(String messageText) {
+        this.messageText = messageText;
     }
 }
