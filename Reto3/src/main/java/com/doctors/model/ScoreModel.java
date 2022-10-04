@@ -12,8 +12,7 @@ public class ScoreModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer score;
-    @ManyToOne
-    @JoinColumn(name = "reservationId")
+    @OneToOne
     @JsonIgnoreProperties("score")
     private ReservationModel reservations;
     public ScoreModel() {

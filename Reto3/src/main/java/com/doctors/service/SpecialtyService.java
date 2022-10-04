@@ -32,6 +32,4 @@ public class SpecialtyService {
     public SpecialtyModel updateSpecialty(SpecialtyModel specialtyModel){
         return specialtyRepository.updateSpecialty(specialtyModel);
     }
-
-
 }

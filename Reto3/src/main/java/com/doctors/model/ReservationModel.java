@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "reservation")
@@ -30,9 +28,9 @@ public class ReservationModel implements Serializable {
     @JoinColumn(name = "clientId")
     @JsonIgnoreProperties({"reservations","messages"})
     private ClientModel client;
-    @OneToMany(mappedBy = "reservations")
+    @OneToOne(mappedBy = "reservations")
     @JsonIgnoreProperties("reservations")
-    private List<ScoreModel> score;
+    private ScoreModel score;
     public ReservationModel() {
     }
 
@@ -97,11 +95,11 @@ public class ReservationModel implements Serializable {
         this.client = client;
     }
 
-    public List<ScoreModel> getScore() {
+    public ScoreModel getScore() {
         return score;
     }
 
-    public void setScore(List<ScoreModel> score) {
+    public void setScore(ScoreModel score) {
         this.score = score;
     }
 }

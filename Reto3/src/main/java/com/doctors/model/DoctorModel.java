@@ -27,12 +27,12 @@ public class DoctorModel implements Serializable {
     @JoinColumn(name = "specialtyId")
     @JsonIgnoreProperties("doctors")
     private SpecialtyModel specialty;
-
+    //{doctor,client}
     @OneToMany(mappedBy = "doctor")
-    @JsonIgnoreProperties("doctor")
+    @JsonIgnoreProperties({"doctor", "client"})
     private List<MessageModel> messages;
     @OneToMany(mappedBy = "doctor")
-    @JsonIgnoreProperties("doctor")
+    @JsonIgnoreProperties({"doctor", "client"})
     private List<ReservationModel> reservations;
 
     //one de mensaje y reservacion
