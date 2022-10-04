@@ -1,7 +1,10 @@
 package com.doctors.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "message")
@@ -12,12 +15,24 @@ public class MessageModel implements Serializable {
 
     @Column(name = "messageText", nullable = false, length = 250)
     private String messageText;
+    @ManyToOne
+    @JoinColumn(name="doctorId")
+    @JsonIgnoreProperties({"messages","reservations"})
+    private DoctorModel doctor;
 
-    //@Column(name = "iddoctor", nullable = false, length = 250) RELACION FK
-    //private Integer iddoctor;
-
-
+    @ManyToOne
+    @JoinColumn(name="clientId")
+    @JsonIgnoreProperties({"messages","reservations"})
+    private ClientModel client;
     public MessageModel() {
+    }
+    public MessageModel(Integer idMessage, String messageText) {
+        this.idMessage = idMessage;
+        this.messageText = messageText;
+    }
+
+    public MessageModel(String messageText) {
+        this.messageText = messageText;
     }
 
     public Integer getIdMessage() {
@@ -36,12 +51,20 @@ public class MessageModel implements Serializable {
         this.messageText = messageText;
     }
 
-    public MessageModel(Integer idMessage, String messageText) {
-        this.idMessage = idMessage;
-        this.messageText = messageText;
+    public DoctorModel getDoctor() {
+        return doctor;
     }
 
-    public MessageModel(String messageText) {
-        this.messageText = messageText;
+    public void setDoctor(DoctorModel doctor) {
+        this.doctor = doctor;
     }
+
+    public ClientModel getClient() {
+        return client;
+    }
+
+    public void setClient(ClientModel client) {
+        this.client = client;
+    }
+
 }

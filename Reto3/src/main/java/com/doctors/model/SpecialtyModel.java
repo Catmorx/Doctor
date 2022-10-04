@@ -1,7 +1,10 @@
 package com.doctors.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "specialty")
@@ -9,13 +12,12 @@ public class SpecialtyModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name = "name", nullable = false, length = 45)
     private String name;
-
-    @Column(name = "description", nullable = false, length = 250)
     private String description;
 
+    @OneToMany(mappedBy = "specialty")
+    @JsonIgnoreProperties("specialty")
+    private List<DoctorModel> doctors;
     public SpecialtyModel() {
     }
 
@@ -54,12 +56,11 @@ public class SpecialtyModel implements Serializable {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "SpecialtyModel{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+    public List<DoctorModel> getDoctors() {
+        return doctors;
+    }
+
+    public void setDoctors(List<DoctorModel> doctors) {
+        this.doctors = doctors;
     }
 }
