@@ -22,7 +22,11 @@ public class DoctorController {
     public List <DoctorModel> getAllDoctors(){
         return doctorService.getAllDoctors();
     }
-
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List <DoctorModel> getAllDoctors2(){
+        return doctorService.getAllDoctors();
+    }
     @GetMapping("/{id}")
     public Optional<DoctorModel> getDoctor(@PathVariable Integer id){ //
         return doctorService.getDoctor(id);
@@ -41,6 +45,7 @@ public class DoctorController {
     }
 
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public DoctorModel updateDoctor(@RequestBody DoctorModel doctorModel){
         return doctorService.updateDoctors(doctorModel);
     }

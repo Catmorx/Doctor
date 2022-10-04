@@ -17,14 +17,14 @@ public class ReservationService {
     public List<ReservationModel> getAllReservations(){
         return (List<ReservationModel>) reservationRepository.getAllReservations();
     }
-    public Optional<ReservationModel> getReservation(Integer id){
-        return reservationRepository.getReservation(id);
+    public Optional<ReservationModel> getReservation(Integer idReservation){
+        return reservationRepository.getReservation(idReservation);
     }
     public ReservationModel saveReservation(ReservationModel reservationModel){
         return reservationRepository.saveReservation(reservationModel);
     }
-    public boolean deleteReservation(Integer id){
-        reservationRepository.deleteReservation(id);
+    public boolean deleteReservation(Integer idReservation){
+        reservationRepository.deleteReservation(idReservation);
         return true;
     }
     public ReservationModel updateReservation(ReservationModel reservationModel){

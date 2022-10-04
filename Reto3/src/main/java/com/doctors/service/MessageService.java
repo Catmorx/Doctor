@@ -17,16 +17,16 @@ public class MessageService {
         return messageRepository.getAllMessage();
     }
 
-    public Optional<MessageModel> getMessage(Integer id) {
-        return messageRepository.getMessage(id);
+    public Optional<MessageModel> getMessage(Integer idMessage) {
+        return messageRepository.getMessage(idMessage);
     }
 
     public MessageModel saveMessage(MessageModel messageModel) {
         return messageRepository.saveMessage(messageModel);
     }
 
-    public boolean deleteMessage(Integer id) {
-        return messageRepository.deleteMessage(id);
+    public boolean deleteMessage(Integer idMessage) {
+        return messageRepository.deleteMessage(idMessage);
     }
 
     public MessageModel updateMessage(MessageModel messageModel) {

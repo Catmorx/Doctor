@@ -18,16 +18,16 @@ public class MessageRepository {
       return (List<MessageModel>) messageCrudRepository.findAll();
   }
 
-  public Optional<MessageModel> getMessage(Integer id) {
-      return messageCrudRepository.findById(id);
+  public Optional<MessageModel> getMessage(Integer idMessage) {
+      return messageCrudRepository.findById(idMessage);
   }
 
   public MessageModel saveMessage(MessageModel messageModel){
       return messageCrudRepository.save(messageModel);
   }
 
-  public boolean deleteMessage(Integer id){
-      messageCrudRepository.deleteById(id);
+  public boolean deleteMessage(Integer idMessage){
+      messageCrudRepository.deleteById(idMessage);
       return true;
   }
 

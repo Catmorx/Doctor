@@ -17,16 +17,16 @@ public class ClientService {
         return clientRepository.getAllClient();
     }
 
-    public Optional<ClientModel> getClient(Integer id) {
-        return clientRepository.getClient(id);
+    public Optional<ClientModel> getClient(Integer idClient) {
+        return clientRepository.getClient(idClient);
     }
 
     public ClientModel saveClient(ClientModel clientModel) {
         return clientRepository.saveClient(clientModel);
     }
 
-    public boolean deleteClient(Integer id) {
-        return clientRepository.deleteClient(id);
+    public boolean deleteClient(Integer idClient) {
+        return clientRepository.deleteClient(idClient);
     }
 
     public ClientModel updateClient(ClientModel clientModel) {

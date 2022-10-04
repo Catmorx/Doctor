@@ -17,8 +17,12 @@ public class SpecialtyController {
     private SpecialtyService specialtyService;
 
     @GetMapping("/all")
-    @PostMapping("/all")
     public List<SpecialtyModel> getAllSpecialty() {
+        return specialtyService.getAllSpecialty();
+    }
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<SpecialtyModel> getAllSpecialty2() {
         return specialtyService.getAllSpecialty();
     }
 
@@ -28,6 +32,7 @@ public class SpecialtyController {
     }
 
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public SpecialtyModel saveSpecialty(@RequestBody SpecialtyModel specialtyModel) {
         return specialtyService.saveSpecialty(specialtyModel);
     }

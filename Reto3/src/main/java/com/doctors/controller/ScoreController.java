@@ -17,8 +17,12 @@ public class ScoreController {
     private ScoreService scoreService;
 
     @GetMapping("/all")
-    @PostMapping("/all")
     public List<ScoreModel> getAllReserveQualifications(){
+        return scoreService.getAllScores();
+    }
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<ScoreModel> getAllReserveQualifications2(){
         return scoreService.getAllScores();
     }
     @GetMapping("/{id}")
@@ -26,6 +30,7 @@ public class ScoreController {
         return scoreService.getScore(id);
     }
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public ScoreModel saveReserveQualification(@RequestBody ScoreModel scoreModel) {
         return scoreService.saveScore(scoreModel);
     }

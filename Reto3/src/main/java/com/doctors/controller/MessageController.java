@@ -16,23 +16,27 @@ public class MessageController {
     @Autowired
     private MessageService messageService;
     @GetMapping("/all")
-    @PostMapping("/all")
     public List<MessageModel> getAllMessage(){
         return messageService.getAllMessage();
     }
-
-    @GetMapping("/{id}")
-    public Optional<MessageModel> getMessage(@PathVariable Integer id){
-        return messageService.getMessage(id);
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<MessageModel> getAllMessage2(){
+        return messageService.getAllMessage();
+    }
+    @GetMapping("/{idMessage}")
+    public Optional<MessageModel> getMessage(@PathVariable Integer idMessage){
+        return messageService.getMessage(idMessage);
     }
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public MessageModel saveMessage(@RequestBody MessageModel messageModel){
         return messageService.saveMessage(messageModel);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public boolean deleteMessage(@PathVariable Integer id){
-        return messageService.deleteMessage(id);
+    @DeleteMapping("/delete/{idMessage}")
+    public boolean deleteMessage(@PathVariable Integer idMessage){
+        return messageService.deleteMessage(idMessage);
     }
 
     @PutMapping("/update")

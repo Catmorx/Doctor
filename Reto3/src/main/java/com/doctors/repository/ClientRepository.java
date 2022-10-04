@@ -19,15 +19,15 @@ public class ClientRepository {
         return (List<ClientModel>) clientCrudRepository.findAll();
     }
 
-    public Optional<ClientModel> getClient(Integer id) {
-        return clientCrudRepository.findById(id);
+    public Optional<ClientModel> getClient(Integer idClient) {
+        return clientCrudRepository.findById(idClient);
     }
 
     public ClientModel saveClient(ClientModel clientModel){
         return clientCrudRepository.save(clientModel);
     }
-    public boolean deleteClient(Integer id){
-        clientCrudRepository.deleteById(id);
+    public boolean deleteClient(Integer idClient){
+        clientCrudRepository.deleteById(idClient);
         return true;
     }
 

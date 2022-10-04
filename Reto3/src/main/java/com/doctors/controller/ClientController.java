@@ -21,19 +21,24 @@ public class ClientController {
     public List<ClientModel> getAllClient(){
         return clientService.getAllClient();
     }
-
-    @GetMapping("/{id}")
-    public Optional <ClientModel> getClient(@PathVariable Integer id){
-        return clientService.getClient(id);
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<ClientModel> getAllClient2(){
+        return clientService.getAllClient();
+    }
+    @GetMapping("/{idClient}")
+    public Optional <ClientModel> getClient(@PathVariable Integer idClient){
+        return clientService.getClient(idClient);
     }
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public ClientModel saveClient(@RequestBody ClientModel clientModel){
         return clientService.saveClient(clientModel);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public boolean deleteClient(@PathVariable Integer id){
-        return clientService.deleteClient(id);
+    @DeleteMapping("/delete/{idCient}")
+    public boolean deleteClient(@PathVariable Integer idCient){
+        return clientService.deleteClient(idCient);
     }
 
     @PutMapping("/update")

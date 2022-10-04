@@ -18,8 +18,12 @@ public class UserAdministratorController {
     private UserAdministratorService userAdministratorService;
 
     @GetMapping("/all")
-    @PostMapping("/all")
     public List<UserAdministratorModel> getAllUserAdministrators(){
+        return (List<UserAdministratorModel>) userAdministratorService.getAllUserAdministrators();
+    }
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<UserAdministratorModel> getAllUserAdministrators2(){
         return (List<UserAdministratorModel>) userAdministratorService.getAllUserAdministrators();
     }
     @GetMapping("{id}")
@@ -27,6 +31,7 @@ public class UserAdministratorController {
         return userAdministratorService.getUserAdministrator(id);
     }
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public UserAdministratorModel saveUserAdministrator(@RequestBody UserAdministratorModel userAdministratorModel){
         return userAdministratorService.saveUserAdministrator(userAdministratorModel);
     }
