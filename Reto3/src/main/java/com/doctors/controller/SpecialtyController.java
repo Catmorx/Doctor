@@ -3,6 +3,7 @@ package com.doctors.controller;
 import com.doctors.model.SpecialtyModel;
 import com.doctors.service.SpecialtyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class SpecialtyController {
     private SpecialtyService specialtyService;
 
     @GetMapping("/all")
+    @PostMapping("/all")
     public List<SpecialtyModel> getAllSpecialty() {
         return specialtyService.getAllSpecialty();
     }
@@ -36,6 +38,7 @@ public class SpecialtyController {
     }
 
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public SpecialtyModel updateSpecialty(@RequestBody SpecialtyModel specialtyModel) {
         return specialtyService.updateSpecialty(specialtyModel);
     }

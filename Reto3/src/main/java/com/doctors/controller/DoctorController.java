@@ -3,6 +3,7 @@ package com.doctors.controller;
 import com.doctors.model.DoctorModel;
 import com.doctors.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class DoctorController {
     private DoctorService doctorService;
 
     @GetMapping("/all")
+    @PostMapping("/all")
     public List <DoctorModel> getAllDoctors(){
         return doctorService.getAllDoctors();
     }
@@ -27,6 +29,7 @@ public class DoctorController {
     }
 
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public DoctorModel saveDoctor(@RequestBody DoctorModel doctorModel){
         return doctorService.saveDoctor(doctorModel);
     }

@@ -3,6 +3,7 @@ package com.doctors.controller;
 import com.doctors.model.ScoreModel;
 import com.doctors.service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class ScoreController {
     private ScoreService scoreService;
 
     @GetMapping("/all")
+    @PostMapping("/all")
     public List<ScoreModel> getAllReserveQualifications(){
         return scoreService.getAllScores();
     }
@@ -33,6 +35,7 @@ public class ScoreController {
         return true;
     }
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public ScoreModel updateReserveQualification(@RequestBody ScoreModel scoreModel){
         return  scoreService.updateScore(scoreModel);
     }

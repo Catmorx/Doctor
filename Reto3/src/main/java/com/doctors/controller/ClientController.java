@@ -3,6 +3,7 @@ package com.doctors.controller;
 import com.doctors.model.ClientModel;
 import com.doctors.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
     @GetMapping("/all")
+    @PostMapping("/all")
     public List<ClientModel> getAllClient(){
         return clientService.getAllClient();
     }
@@ -35,6 +37,7 @@ public class ClientController {
     }
 
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public ClientModel updateClient(@RequestBody ClientModel clientModel){
         return clientService.updateClient(clientModel);
     }

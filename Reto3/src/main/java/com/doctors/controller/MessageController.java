@@ -3,6 +3,7 @@ package com.doctors.controller;
 import com.doctors.model.MessageModel;
 import com.doctors.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class MessageController {
     @Autowired
     private MessageService messageService;
     @GetMapping("/all")
+    @PostMapping("/all")
     public List<MessageModel> getAllMessage(){
         return messageService.getAllMessage();
     }
@@ -34,6 +36,7 @@ public class MessageController {
     }
 
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public MessageModel updateMessage(@RequestBody MessageModel messageModel){
         return messageService.updateMessage(messageModel);
     }

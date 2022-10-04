@@ -3,6 +3,7 @@ package com.doctors.controller;
 import com.doctors.model.UserAdministratorModel;
 import com.doctors.service.UserAdministratorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class UserAdministratorController {
     private UserAdministratorService userAdministratorService;
 
     @GetMapping("/all")
+    @PostMapping("/all")
     public List<UserAdministratorModel> getAllUserAdministrators(){
         return (List<UserAdministratorModel>) userAdministratorService.getAllUserAdministrators();
     }
@@ -34,6 +36,7 @@ public class UserAdministratorController {
         return true;
     }
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public UserAdministratorModel updateUserAdministrator(@RequestBody UserAdministratorModel userAdministratorModel){
         return  userAdministratorService.updateUserAdministrator(userAdministratorModel);
     }
