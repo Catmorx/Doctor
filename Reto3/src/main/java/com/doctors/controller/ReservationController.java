@@ -18,32 +18,36 @@ public class ReservationController {
     private ReservationService reservationService;
 
     @GetMapping("all")
-    public List<ReservationModel> getAllReservations(){
+    public List<ReservationModel> getAllReservations() {
         return (List<ReservationModel>) reservationService.getAllReservations();
     }
+
     @PostMapping("/all")
     @ResponseStatus(HttpStatus.CREATED)
-    public List<ReservationModel> getAllReservations2(){
+    public List<ReservationModel> getAllReservations2() {
         return (List<ReservationModel>) reservationService.getAllReservations();
     }
+
     @GetMapping("{idReservation}")
-    public Optional<ReservationModel> getReservation(@PathVariable Integer idReservation){
+    public Optional<ReservationModel> getReservation(@PathVariable Integer idReservation) {
         return reservationService.getReservation(idReservation);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public ReservationModel saveReservation(@RequestBody ReservationModel reservationModel){
+    public ReservationModel saveReservation(@RequestBody ReservationModel reservationModel) {
         return reservationService.saveReservation(reservationModel);
     }
+
     @DeleteMapping("/delete/{idReservation}")
-    public boolean deleteReservation(@PathVariable Integer idReservation){
+    public boolean deleteReservation(@PathVariable Integer idReservation) {
         reservationService.deleteReservation(idReservation);
         return true;
     }
+
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public ReservationModel updateReservation(@RequestBody ReservationModel reservationModel){
-        return  reservationService.updateReservation(reservationModel);
+    public ReservationModel updateReservation(@RequestBody ReservationModel reservationModel) {
+        return reservationService.updateReservation(reservationModel);
     }
 }

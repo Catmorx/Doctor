@@ -1,10 +1,13 @@
+var host = "http://localhost:8080/api";
+
 function mostrarInformacionCli() {
     $.ajax({
-        url: 'https://g6fa7bce83865eb-yc6akd8hrlz5qzxx.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/client/client',
+        url: host + '/Client/all',
         type: 'GET',
         dataType: "JSON",
         success: function (respuesta) {
-            tablaRespuestaCli(respuesta.items);
+            console.log(respuesta);
+            tablaRespuestaCli(respuesta);
         }, error: function (e) {
             console.log(e);
             alert("Algo salió mal");
@@ -14,16 +17,21 @@ function mostrarInformacionCli() {
         }
     });
 }
+
+$(document).ready(function () {
+    mostrarInformacionCli();
+})
+
 function tablaRespuestaCli(items) {
-    let myTableCli = `<table BORDER CELLPADDING=2 BORDERCOLOR='#7c65b1'><th scope='col'> ID </th><th> FULL NAME </th><th> EMAIL </th><th> AGE </th>`;
+    let myTableCli = `<table BORDER CELLPADDING=2 BORDERCOLOR='#7c65b1'><th scope='col'> ID </th><th> EMAIL </th><th> FULL NAME </th><th> AGE </th>`;
     for (let i = 0; i < items.length; i++) {
         myTableCli += `<tr>`;
-        myTableCli += `<td>${items[i].id}</td>`;
-        myTableCli += `<td>${items[i].name}</td>`;
+        myTableCli += `<td>${items[i].idClient}</td>`;
         myTableCli += `<td>${items[i].email}</td>`;
+        myTableCli += `<td>${items[i].name}</td>`;
         myTableCli += `<td>${items[i].age}</td>`;
-        myTableCli += `<td> <button onclick="finishActuCli( ${items[i].id}, '${items[i].name}', '${items[i].email}', ${items[i].age} )" style="background-color:#7c65b1; border-color:#563856; color:white;">Editar</button></td>`;
-        myTableCli += `<td> <button onclick="borrarInformacionCli(${items[i].id})" style="background-color:#7c65b1; border-color:#563856; color:white;">Borrar</button></td>`;
+        myTableCli += `<td> <button onclick="finishActuCli( ${items[i].idClient}, '${items[i].email}', '${items[i].password}','${items[i].name}', ${items[i].age} )" style="background-color:#7c65b1; border-color:#563856; color:white;">Change</button></td>`;
+        myTableCli += `<td> <button onclick="borrarInformacionCli(${items[i].idClient})" style="background-color:#7c65b1; border-color:#563856; color:white;">Delete</button></td>`;
         myTableCli += `</tr>`;
     }
     $("#resultadoCli").append(myTableCli);
@@ -33,7 +41,7 @@ function tablaRespuestaCli(items) {
 function agregarInformacionCli() {
     $.ajax({
         type: "POST",
-        url: "https://g6fa7bce83865eb-yc6akd8hrlz5qzxx.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/client/client",
+        url: host + '/Client/save',
         data: JSON.stringify({
             id: $("#idCli").val(),
             name: $("#nameCli").val(),
@@ -53,28 +61,33 @@ function agregarInformacionCli() {
         alert("Algo salió mal");
     });
 }
-function finishActuCli(id, name, email, age) {
+
+function finishActuCli(id, email, password, name, age) {
     $("#idCli").val(id);
-    $("#nameCli").val(name);
     $("#emailCli").val(email);
+    //$("#passwordCli").val(password);
+    $("#nameCli").val(name);
     $("#ageCli").val(age);
 }
+
 function actualizarInformacionCli() {
     $.ajax({
         method: 'PUT',
-        url: 'https://g6fa7bce83865eb-yc6akd8hrlz5qzxx.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/client/client',
+        url: host + '/Client/update',
         data: JSON.stringify({
             id: $("#idCli").val(),
-            name: $("#nameCli").val(),
             email: $("#emailCli").val(),
+            password: $("#passwordCli").val(),
+            name: $("#nameCli").val(),
             age: $("#ageCli").val(),
         }),
         contentType: "application/JSON"
     }).done(function (data) {
         $("#resultadoCli").empty();
         $("#idCli").val("");
-        $("#nameCli").val("");
         $("#emailCli").val("");
+        $("#passwordCli").val();
+        $("#nameCli").val("");
         $("#ageCli").val("");
         mostrarInformacionCli();
         alert("Elementos de cliente actualizados");//imprimimos respuesta
@@ -83,11 +96,11 @@ function actualizarInformacionCli() {
         alert("Algo salió mal");
     });
 }
+
 function borrarInformacionCli(id) {
     $.ajax({
         method: 'DELETE',
-        url: 'https://g6fa7bce83865eb-yc6akd8hrlz5qzxx.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/client/client',
-        data: JSON.stringify({ id }),
+        url: host + '/Client/delete/' + id,
         contentType: "application/json",
         success: function (data) {
             $("#resultadoCli").empty();

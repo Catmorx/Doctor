@@ -18,31 +18,36 @@ public class UserAdministratorController {
     private UserAdministratorService userAdministratorService;
 
     @GetMapping("/all")
-    public List<UserAdministratorModel> getAllUserAdministrators(){
+    public List<UserAdministratorModel> getAllUserAdministrators() {
         return (List<UserAdministratorModel>) userAdministratorService.getAllUserAdministrators();
     }
+
     @PostMapping("/all")
     @ResponseStatus(HttpStatus.CREATED)
-    public List<UserAdministratorModel> getAllUserAdministrators2(){
+    public List<UserAdministratorModel> getAllUserAdministrators2() {
         return (List<UserAdministratorModel>) userAdministratorService.getAllUserAdministrators();
     }
+
     @GetMapping("{id}")
-    public Optional<UserAdministratorModel> getUserAdministrator(@PathVariable Integer id){
+    public Optional<UserAdministratorModel> getUserAdministrator(@PathVariable Integer id) {
         return userAdministratorService.getUserAdministrator(id);
     }
+
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public UserAdministratorModel saveUserAdministrator(@RequestBody UserAdministratorModel userAdministratorModel){
+    public UserAdministratorModel saveUserAdministrator(@RequestBody UserAdministratorModel userAdministratorModel) {
         return userAdministratorService.saveUserAdministrator(userAdministratorModel);
     }
+
     @DeleteMapping("/delete/{id}")
-    public boolean deleteUserAdministratorModel(@PathVariable Integer id){
+    public boolean deleteUserAdministratorModel(@PathVariable Integer id) {
         userAdministratorService.deleteUserAdministrator(id);
         return true;
     }
+
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public UserAdministratorModel updateUserAdministrator(@RequestBody UserAdministratorModel userAdministratorModel){
-        return  userAdministratorService.updateUserAdministrator(userAdministratorModel);
+    public UserAdministratorModel updateUserAdministrator(@RequestBody UserAdministratorModel userAdministratorModel) {
+        return userAdministratorService.updateUserAdministrator(userAdministratorModel);
     }
 }

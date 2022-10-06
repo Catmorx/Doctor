@@ -18,6 +18,7 @@ public class SpecialtyModel implements Serializable {
     @OneToMany(mappedBy = "specialty")
     @JsonIgnoreProperties("specialty")
     private List<DoctorModel> doctors;
+
     public SpecialtyModel() {
     }
 

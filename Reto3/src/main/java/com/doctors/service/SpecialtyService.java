@@ -13,23 +13,23 @@ public class SpecialtyService {
     @Autowired
     private SpecialtyRepository specialtyRepository;
 
-    public List<SpecialtyModel> getAllSpecialty(){
+    public List<SpecialtyModel> getAllSpecialty() {
         return specialtyRepository.getAllSpecialty();
     }
 
-    public Optional<SpecialtyModel> getSpecialty(Integer id){
+    public Optional<SpecialtyModel> getSpecialty(Integer id) {
         return specialtyRepository.getSpecialty(id);
     }
 
-    public SpecialtyModel saveSpecialty(SpecialtyModel specialtyModel){
+    public SpecialtyModel saveSpecialty(SpecialtyModel specialtyModel) {
         return specialtyRepository.saveSpecialty(specialtyModel);
     }
 
-    public boolean deleteSpecialty(Integer id){
+    public boolean deleteSpecialty(Integer id) {
         return specialtyRepository.deleteSpecialty(id);
     }
 
-    public SpecialtyModel updateSpecialty(SpecialtyModel specialtyModel){
+    public SpecialtyModel updateSpecialty(SpecialtyModel specialtyModel) {
         return specialtyRepository.updateSpecialty(specialtyModel);
     }
 }

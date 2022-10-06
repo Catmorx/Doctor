@@ -7,19 +7,19 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name="doctor")
+@Table(name = "doctor")
 public class DoctorModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name= "name", nullable = false, length = 45)
+    @Column(name = "name", nullable = false, length = 45)
     private String name;
 
     //@Column(name= "specialty", nullable = false, length = 45)
     //private String specialty;
-    @Column(name= "department", nullable = false, length = 45)
+    @Column(name = "department", nullable = false, length = 45)
     private String department;
-    @Column(name= "year", nullable = false, length = 4)
+    @Column(name = "year", nullable = false, length = 4)
     private Integer year;
 
     private String description;
@@ -45,6 +45,7 @@ public class DoctorModel implements Serializable {
         this.name = name;
         this.description = description;
     }
+
     public DoctorModel(Integer year, String name, String description) {
         this.year = year;
         this.name = name;

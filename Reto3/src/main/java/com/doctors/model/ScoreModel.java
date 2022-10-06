@@ -15,6 +15,7 @@ public class ScoreModel {
     @OneToOne
     @JsonIgnoreProperties("score")
     private ReservationModel reservations;
+
     public ScoreModel() {
     }
 

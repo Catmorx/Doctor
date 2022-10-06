@@ -20,6 +20,7 @@ public class SpecialtyController {
     public List<SpecialtyModel> getAllSpecialty() {
         return specialtyService.getAllSpecialty();
     }
+
     @PostMapping("/all")
     @ResponseStatus(HttpStatus.CREATED)
     public List<SpecialtyModel> getAllSpecialty2() {

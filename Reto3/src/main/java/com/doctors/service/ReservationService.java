@@ -14,20 +14,24 @@ public class ReservationService {
     @Autowired
     private ReservationRepository reservationRepository;
 
-    public List<ReservationModel> getAllReservations(){
+    public List<ReservationModel> getAllReservations() {
         return (List<ReservationModel>) reservationRepository.getAllReservations();
     }
-    public Optional<ReservationModel> getReservation(Integer idReservation){
+
+    public Optional<ReservationModel> getReservation(Integer idReservation) {
         return reservationRepository.getReservation(idReservation);
     }
-    public ReservationModel saveReservation(ReservationModel reservationModel){
+
+    public ReservationModel saveReservation(ReservationModel reservationModel) {
         return reservationRepository.saveReservation(reservationModel);
     }
-    public boolean deleteReservation(Integer idReservation){
+
+    public boolean deleteReservation(Integer idReservation) {
         reservationRepository.deleteReservation(idReservation);
         return true;
     }
-    public ReservationModel updateReservation(ReservationModel reservationModel){
+
+    public ReservationModel updateReservation(ReservationModel reservationModel) {
         return reservationRepository.updateReservation(reservationModel);
     }
 }

@@ -17,31 +17,36 @@ public class ScoreController {
     private ScoreService scoreService;
 
     @GetMapping("/all")
-    public List<ScoreModel> getAllReserveQualifications(){
+    public List<ScoreModel> getAllReserveQualifications() {
         return scoreService.getAllScores();
     }
+
     @PostMapping("/all")
     @ResponseStatus(HttpStatus.CREATED)
-    public List<ScoreModel> getAllReserveQualifications2(){
+    public List<ScoreModel> getAllReserveQualifications2() {
         return scoreService.getAllScores();
     }
+
     @GetMapping("/{id}")
-    public Optional<ScoreModel> getReserveQualification(@PathVariable Integer id){
+    public Optional<ScoreModel> getReserveQualification(@PathVariable Integer id) {
         return scoreService.getScore(id);
     }
+
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public ScoreModel saveReserveQualification(@RequestBody ScoreModel scoreModel) {
         return scoreService.saveScore(scoreModel);
     }
+
     @DeleteMapping("/delete/{id}")
-    public boolean deleteReserveQualification(@PathVariable Integer id){
+    public boolean deleteReserveQualification(@PathVariable Integer id) {
         scoreService.deleteScore(id);
         return true;
     }
+
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public ScoreModel updateReserveQualification(@RequestBody ScoreModel scoreModel){
-        return  scoreService.updateScore(scoreModel);
+    public ScoreModel updateReserveQualification(@RequestBody ScoreModel scoreModel) {
+        return scoreService.updateScore(scoreModel);
     }
 }

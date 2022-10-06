@@ -18,35 +18,35 @@ public class DoctorController {
     private DoctorService doctorService;
 
     @GetMapping("/all")
-    @PostMapping("/all")
-    public List <DoctorModel> getAllDoctors(){
+    public List<DoctorModel> getAllDoctors() {
         return doctorService.getAllDoctors();
     }
+
     @PostMapping("/all")
     @ResponseStatus(HttpStatus.CREATED)
-    public List <DoctorModel> getAllDoctors2(){
+    public List<DoctorModel> getAllDoctors2() {
         return doctorService.getAllDoctors();
     }
+
     @GetMapping("/{id}")
-    public Optional<DoctorModel> getDoctor(@PathVariable Integer id){ //
+    public Optional<DoctorModel> getDoctor(@PathVariable Integer id) { //
         return doctorService.getDoctor(id);
     }
 
     @PostMapping("/save")
-    @ResponseStatus(HttpStatus.CREATED)
-    public DoctorModel saveDoctor(@RequestBody DoctorModel doctorModel){
+    public DoctorModel saveDoctor(@RequestBody DoctorModel doctorModel) {
         return doctorService.saveDoctor(doctorModel);
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean deleteDoctor(@PathVariable Integer id){
+    public boolean deleteDoctor(@PathVariable Integer id) {
         doctorService.deleteDoctor(id);
         return true;
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public DoctorModel updateDoctor(@RequestBody DoctorModel doctorModel){
+    public DoctorModel updateDoctor(@RequestBody DoctorModel doctorModel) {
         return doctorService.updateDoctors(doctorModel);
     }
 }

@@ -16,34 +16,37 @@ public class ClientController {
 
     @Autowired
     private ClientService clientService;
+
     @GetMapping("/all")
-    @PostMapping("/all")
-    public List<ClientModel> getAllClient(){
+    public List<ClientModel> getAllClient() {
         return clientService.getAllClient();
     }
+
     @PostMapping("/all")
     @ResponseStatus(HttpStatus.CREATED)
-    public List<ClientModel> getAllClient2(){
+    public List<ClientModel> getAllClient2() {
         return clientService.getAllClient();
     }
+
     @GetMapping("/{idClient}")
-    public Optional <ClientModel> getClient(@PathVariable Integer idClient){
+    public Optional<ClientModel> getClient(@PathVariable Integer idClient) {
         return clientService.getClient(idClient);
     }
+
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public ClientModel saveClient(@RequestBody ClientModel clientModel){
+    public ClientModel saveClient(@RequestBody ClientModel clientModel) {
         return clientService.saveClient(clientModel);
     }
 
     @DeleteMapping("/delete/{idCient}")
-    public boolean deleteClient(@PathVariable Integer idCient){
+    public boolean deleteClient(@PathVariable Integer idCient) {
         return clientService.deleteClient(idCient);
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public ClientModel updateClient(@RequestBody ClientModel clientModel){
+    public ClientModel updateClient(@RequestBody ClientModel clientModel) {
         return clientService.updateClient(clientModel);
     }
 }

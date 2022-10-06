@@ -14,20 +14,25 @@ public class UserAdministratorService {
 
     @Autowired
     private UserAdministratorRepository userAdministratorRepository;
-    public List<UserAdministratorModel> getAllUserAdministrators(){
+
+    public List<UserAdministratorModel> getAllUserAdministrators() {
         return (List<UserAdministratorModel>) userAdministratorRepository.getAllUserAdministrators();
     }
-    public Optional<UserAdministratorModel> getUserAdministrator(Integer id){
+
+    public Optional<UserAdministratorModel> getUserAdministrator(Integer id) {
         return userAdministratorRepository.getUserAdministrator(id);
     }
-    public UserAdministratorModel saveUserAdministrator(UserAdministratorModel userAdministratorModel){
+
+    public UserAdministratorModel saveUserAdministrator(UserAdministratorModel userAdministratorModel) {
         return userAdministratorRepository.saveUserAdministrator(userAdministratorModel);
     }
-    public boolean deleteUserAdministrator(Integer id){
+
+    public boolean deleteUserAdministrator(Integer id) {
         userAdministratorRepository.deleteUserAdministrator(id);
         return true;
     }
-    public UserAdministratorModel updateUserAdministrator(UserAdministratorModel userAdministratorModel){
+
+    public UserAdministratorModel updateUserAdministrator(UserAdministratorModel userAdministratorModel) {
         return userAdministratorRepository.updateUserAdministrator(userAdministratorModel);
     }
 }

@@ -30,6 +30,6 @@ public class ClientService {
     }
 
     public ClientModel updateClient(ClientModel clientModel) {
-        return clientRepository.saveClient(clientModel);
+        return clientRepository.updateClient(clientModel);
     }
 }

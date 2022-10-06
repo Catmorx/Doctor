@@ -1,29 +1,40 @@
+var host = "http://localhost:8080/api";
+
 function mostrarInformacionDoc() {
     $.ajax({
-        url: 'http://129.213.139.66:8080/api/doctor/all',
+        url: host + '/Doctor/all',
         type: 'GET',
         dataType: "JSON",
         success: function (respuesta) {
             console.log(respuesta);
-            tableRespuestaDoc(respuesta.items);
+
+            tableRespuestaDoc(respuesta);
         }, error: function (e) {
             console.log(e);
             alert("Algo salió mal");
         }
     });
 }
+
+$(document).ready(function () {
+    mostrarInformacionDoc();
+})
+
 function tableRespuestaDoc(items) {
-    let myTableDoc = `<table BORDER CELLPADDING=2 BORDERCOLOR='#7c65b1'><th scope='col'> ID </th><th> SPECIALTY </th><th> GRADUATE YEAR </th><th> DEPARTMENT ID </th><th> FULL NAME</th>`;
+    let myTableDoc = `<table BORDER CELLPADDING=2 BORDERCOLOR='#7c65b1'><th scope='col'> FULL NAME </th><th> DEPARTMENT </th><th> GRADUATE YEAR </th><th> DESCRIPTION </th><th> SPECIALTY</th>`;
     for (let i = 0; i < items.length; i++) {
         myTableDoc += `<tr>`;
-        myTableDoc += `<td>${items[i].id}</td>`;
-        myTableDoc += `<td>${items[i].specialty}</td>`;
-        myTableDoc += `<td>${items[i].graduate_year}</td>`;
-        myTableDoc += `<td>${items[i].department_id}</td>`;
         myTableDoc += `<td>${items[i].name}</td>`;
-        myTableDoc += `<td> <button onclick="finishActuDoc( ${items[i].id}, '${items[i].specialty}', ${items[i].graduate_year}, ${items[i].department_id}, '${items[i].name}' )" style="background-color:#7c65b1; border-color:#563856; color:white;">Editar</button></td>`;
-        myTableDoc += `<td> <button onclick="borrarInformacionDoc(${items[i].id})" style="background-color:#7c65b1; border-color:#563856; color:white;">Borrar</button></td>`;
+        myTableDoc += `<td>${items[i].department}</td>`;
+        myTableDoc += `<td>${items[i].year}</td>`;
+        myTableDoc += `<td>${items[i].description}</td>`;
+        myTableDoc += `<td>${items[i].specialty.name}</td>`;
+        myTableDoc += `<td> <button onclick="finishActuDoc( ${items[i].id}, '${items[i].name}', '${items[i].department}', ${items[i].year}, '${items[i].specialty.name}', '${items[i].description}')" style="background-color:#7c65b1; border-color:#563856; color:white;">Change</button></td>`;
+        myTableDoc += `<td> <button onclick="borrarInformacionDoc(${items[i].id})" style="background-color:#7c65b1; border-color:#563856; color:white;">Delete</button></td>`;
         myTableDoc += `</tr>`;
+        const element = items[i];
+        $('#specialty').append(`<option value="${element.specialty.id}">${element.specialty.name}</option>`);
+        $("#specialty").val("");
     }
     $("#resultadoDoc").append(myTableDoc);
     myTableDoc = `</table>`;
@@ -32,54 +43,57 @@ function tableRespuestaDoc(items) {
 function agregarInformacionDoc() {
     $.ajax({
         type: "POST",
-        url: "https://g6fa7bce83865eb-yc6akd8hrlz5qzxx.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/doctor/doctor",
+        url: host + "/Doctor/save",
         data: JSON.stringify({
             id: $("#idDoc").val(),
             specialty: $("#specialty").val(),
             graduate_year: $("#graduate_year").val(),
-            department_id: $("#department_id").val(),
+            department_id: $("#department").val(),
             name: $("#nameDoc").val(),
+            description: $("#description").val(),
         }),
         contentType: "application/json"
     }).done(function (data) {
         $("#resultadoDoc").empty();
-        $("#idDoc").val("");
         $("#specialty").val("");
         $("#graduate_year").val("");
-        $("#department_id").val("");
+        $("#department").val("");
         $("#nameDoc").val("");
+        $("#description").val("");
         mostrarInformacionDoc();
         alert("Elementos de doctor agregados");//imprimimos respuesta
     }).fail(function (e) {
         alert("Algo salió mal");
     });
 }
-function finishActuDoc(id, specialty, graduate_year, department_id, name) {
-    $("#idDoc").val(id);
-    $("#specialty").val(specialty);
-    $("#graduate_year").val(graduate_year);
-    $("#department_id").val(department_id);
+
+function finishActuDoc(id, name, department, graduate_year, specialty, description) {
     $("#nameDoc").val(name);
+    $("#department").val(department);
+    $("#graduate_year").val(graduate_year);
+    $("#description").val(description);
 }
+
 function actualizarInformacionDoc() {
     $.ajax({
         method: 'PUT',
-        url: 'https://g6fa7bce83865eb-yc6akd8hrlz5qzxx.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/doctor/doctor',
+        url: host + '/Doctor/update',
         data: JSON.stringify({
             id: $("#idDoc").val(),
             specialty: $("#specialty").val(),
             graduate_year: $("#graduate_year").val(),
-            department_id: $("#department_id").val(),
+            department_id: $("#department").val(),
             name: $("#nameDoc").val(),
+            description: $("#description").val(),
         }),
         contentType: "application/JSON",
     }).done(function (data) {
         $("#resultadoDoc").empty();
         $("#idDoc").val("");
-        $("#specialty").val("");
         $("#graduate_year").val("");
-        $("#department_id").val("");
+        $("#department").val("");
         $("#nameDoc").val("");
+        $("#description").val()
         mostrarInformacionDoc();
         alert("Elementos de doctor actualizados");//imprimimos respuesta
     }).fail(function (e) {
@@ -88,11 +102,12 @@ function actualizarInformacionDoc() {
     });
 
 }
+
 function borrarInformacionDoc(id) {
     $.ajax({
         method: 'DELETE',
-        url: 'https://g6fa7bce83865eb-yc6akd8hrlz5qzxx.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/doctor/doctor',
-        data: JSON.stringify({ id }),
+        url: host + '/Doctor/delete/' + id,
+        data: JSON.stringify({id}),
         contentType: "application/JSON",
         success: function (data) {
             console.log(data);

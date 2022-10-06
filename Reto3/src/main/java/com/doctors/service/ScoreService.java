@@ -14,20 +14,24 @@ public class ScoreService {
     @Autowired
     private ScoreRepository scoreRepository;
 
-    public List<ScoreModel> getAllScores(){
+    public List<ScoreModel> getAllScores() {
         return scoreRepository.getAllScores();
     }
-    public Optional<ScoreModel> getScore(Integer id){
+
+    public Optional<ScoreModel> getScore(Integer id) {
         return scoreRepository.getScore(id);
     }
-    public ScoreModel saveScore(ScoreModel scoreModel){
+
+    public ScoreModel saveScore(ScoreModel scoreModel) {
         return scoreRepository.saveScore(scoreModel);
     }
-    public boolean deleteScore(Integer id){
+
+    public boolean deleteScore(Integer id) {
         scoreRepository.deleteScore(id);
         return true;
     }
-    public ScoreModel updateScore(ScoreModel scoreModel){
+
+    public ScoreModel updateScore(ScoreModel scoreModel) {
         return scoreRepository.updateScore(scoreModel);
     }
 }

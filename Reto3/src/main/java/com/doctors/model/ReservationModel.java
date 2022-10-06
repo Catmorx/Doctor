@@ -15,7 +15,7 @@ public class ReservationModel implements Serializable {
     private Integer idReservation;
     private Date startDate;
     private Date devolutionDate;
-    private String status="created";
+    private String status = "created";
     //lave fk client
     //llave fk doctor
 
@@ -26,11 +26,12 @@ public class ReservationModel implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "clientId")
-    @JsonIgnoreProperties({"reservations","messages"})
+    @JsonIgnoreProperties({"reservations", "messages"})
     private ClientModel client;
     @OneToOne(mappedBy = "reservations")
     @JsonIgnoreProperties("reservations")
     private ScoreModel score;
+
     public ReservationModel() {
     }
 

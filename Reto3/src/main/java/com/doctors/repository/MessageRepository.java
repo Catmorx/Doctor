@@ -11,27 +11,47 @@ import java.util.Optional;
 @Repository
 public class MessageRepository {
 
-  @Autowired
-  private MessageCrudRepository messageCrudRepository;
+    @Autowired
+    private MessageCrudRepository messageCrudRepository;
 
-  public List<MessageModel> getAllMessage(){
-      return (List<MessageModel>) messageCrudRepository.findAll();
-  }
+    public List<MessageModel> getAllMessage() {
+        return (List<MessageModel>) messageCrudRepository.findAll();
+    }
 
-  public Optional<MessageModel> getMessage(Integer idMessage) {
-      return messageCrudRepository.findById(idMessage);
-  }
+    public Optional<MessageModel> getMessage(Integer idMessage) {
+        return messageCrudRepository.findById(idMessage);
+    }
 
-  public MessageModel saveMessage(MessageModel messageModel){
-      return messageCrudRepository.save(messageModel);
-  }
+    public MessageModel saveMessage(MessageModel messageModel) {
+        return messageCrudRepository.save(messageModel);
+    }
 
-  public boolean deleteMessage(Integer idMessage){
-      messageCrudRepository.deleteById(idMessage);
-      return true;
-  }
+    public boolean deleteMessage(Integer idMessage) {
+        messageCrudRepository.deleteById(idMessage);
+        return true;
+    }
 
-  public MessageModel updateMessage (MessageModel messageModel){
-      return messageCrudRepository.save(messageModel);
-  }
+    public MessageModel updateMessage(MessageModel messageModel) {
+        if (messageModel.getIdMessage() != null) {
+            Optional<MessageModel> message = messageCrudRepository.findById(messageModel.getIdMessage());
+            if (!message.isEmpty()) {
+                if (messageModel.getMessageText() != null) {
+                    message.get().setMessageText(messageModel.getMessageText());
+                }
+                if (messageModel.getDoctor() != null) {
+                    message.get().setDoctor(messageModel.getDoctor());
+                }
+                if (messageModel.getClient() != null) {
+                    message.get().setClient(messageModel.getClient());
+                }
+                messageCrudRepository.save(message.get());
+                return message.get();
+            } else {
+                return messageModel;
+            }
+        } else {
+            return messageModel;
+        }
+
+    }
 }

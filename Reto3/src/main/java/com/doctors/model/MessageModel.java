@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @Table(name = "message")
@@ -16,16 +15,18 @@ public class MessageModel implements Serializable {
     @Column(name = "messageText", nullable = false, length = 250)
     private String messageText;
     @ManyToOne
-    @JoinColumn(name="doctorId")
-    @JsonIgnoreProperties({"messages","reservations"})
+    @JoinColumn(name = "doctorId")
+    @JsonIgnoreProperties({"messages", "reservations"})
     private DoctorModel doctor;
 
     @ManyToOne
-    @JoinColumn(name="clientId")
-    @JsonIgnoreProperties({"messages","reservations"})
+    @JoinColumn(name = "clientId")
+    @JsonIgnoreProperties({"messages", "reservations"})
     private ClientModel client;
+
     public MessageModel() {
     }
+
     public MessageModel(Integer idMessage, String messageText) {
         this.idMessage = idMessage;
         this.messageText = messageText;

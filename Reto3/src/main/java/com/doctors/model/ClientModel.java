@@ -13,12 +13,12 @@ public class ClientModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idClient;
 
-    @Column(name ="email", nullable = false, length = 45)
+    @Column(name = "email", nullable = false, length = 45)
     private String email;
 
     @Column(name = "password", nullable = false, length = 45)
     private String password;
-    @Column(name= "name", nullable = false, length = 250)
+    @Column(name = "name", nullable = false, length = 250)
     private String name;
     private Integer age;
     @OneToMany(mappedBy = "client")
@@ -27,6 +27,7 @@ public class ClientModel implements Serializable {
     @OneToMany(mappedBy = "client")
     @JsonIgnoreProperties("client")
     private List<ReservationModel> reservations;
+
     public ClientModel() {
     }
 
