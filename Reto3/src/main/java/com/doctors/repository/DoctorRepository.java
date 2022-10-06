@@ -1,5 +1,6 @@
 package com.doctors.repository;
 
+import com.doctors.model.ClientModel;
 import com.doctors.model.DoctorModel;
 import com.doctors.repository.crudrepository.DoctorCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +29,9 @@ public class DoctorRepository {
         return doctorCrudRepository.save(doctorModel);
     }
 
-    public boolean deleteDoctor(Integer id) {
-        try {
-            doctorCrudRepository.deleteById(id);
-            return true;
-        }catch (Exception e){
-            return false;
+    public void deleteDoctor(DoctorModel doctorModel) {
+        if (doctorModel.getId()!=null){
+            doctorCrudRepository.delete(doctorModel);
         }
     }
 

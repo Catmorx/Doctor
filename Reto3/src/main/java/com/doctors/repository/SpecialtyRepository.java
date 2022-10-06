@@ -1,5 +1,6 @@
 package com.doctors.repository;
 
+import com.doctors.model.ClientModel;
 import com.doctors.model.ReservationModel;
 import com.doctors.model.SpecialtyModel;
 import com.doctors.repository.crudrepository.SpecialtyCrudRepository;
@@ -27,12 +28,9 @@ public class SpecialtyRepository {
         return specialtyCrudRepository.save(specialtyModel);
     }
 
-    public boolean deleteSpecialty(Integer specialty_id) {
-        try {
-            specialtyCrudRepository.deleteById(specialty_id);
-            return true;
-        }catch (Exception e){
-            return false;
+    public void deleteSpecialty(SpecialtyModel specialtyModel) {
+        if (specialtyModel.getId() != null){
+            specialtyCrudRepository.delete(specialtyModel);
         }
     }
 
