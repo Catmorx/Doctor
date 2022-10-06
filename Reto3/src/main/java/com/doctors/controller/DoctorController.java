@@ -35,7 +35,6 @@ public class DoctorController {
     }
 
     @PostMapping("/save")
-    @ResponseStatus(HttpStatus.CREATED)
     public DoctorModel saveDoctor(@RequestBody DoctorModel doctorModel) {
         return doctorService.saveDoctor(doctorModel);
     }
