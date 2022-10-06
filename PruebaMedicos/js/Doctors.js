@@ -4,7 +4,7 @@ function mostrarInformacionDoc() {
         type: 'GET',
         dataType: "JSON",
         success: function (respuesta) {
-            console.log(respuesta);
+            console.log(respuesta.items);
             tableRespuestaDoc(respuesta.items);
         }, error: function (e) {
             console.log(e);
@@ -15,8 +15,9 @@ function mostrarInformacionDoc() {
 function tableRespuestaDoc(items) {
     let myTableDoc = `<table BORDER CELLPADDING=2 BORDERCOLOR='#7c65b1'><th scope='col'> ID </th><th> SPECIALTY </th><th> GRADUATE YEAR </th><th> DEPARTMENT ID </th><th> FULL NAME</th>`;
     for (let i = 0; i < items.length; i++) {
+       
         myTableDoc += `<tr>`;
-        myTableDoc += `<td>${items[i].id}</td>`;
+        //myTableDoc += `<td>${items[i].id}</td>`;
         myTableDoc += `<td>${items[i].specialty}</td>`;
         myTableDoc += `<td>${items[i].graduate_year}</td>`;
         myTableDoc += `<td>${items[i].department_id}</td>`;

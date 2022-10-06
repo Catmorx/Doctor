@@ -1,6 +1,6 @@
 function mostrarInformacionCli() {
     $.ajax({
-        url: 'https://g6fa7bce83865eb-yc6akd8hrlz5qzxx.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/client/client',
+        url: 'https://129.80.248.129:8080/api/Client/all',
         type: 'GET',
         dataType: "JSON",
         success: function (respuesta) {
@@ -46,7 +46,7 @@ function tablaRespuestaCli(items) {
 function agregarInformacionCli() {
     $.ajax({
         type: "POST",
-        url: "https://g6fa7bce83865eb-yc6akd8hrlz5qzxx.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/client/client",
+        url: "https://129.80.248.129:8080/api/Client/save",
         data: JSON.stringify({
             id: $("#idCli").val(),
             name: $("#nameCli").val(),
@@ -75,7 +75,7 @@ function finishActuCli(id, name, email, age) {
 function actualizarInformacionCli() {
     $.ajax({
         method: 'PUT',
-        url: 'https://g6fa7bce83865eb-yc6akd8hrlz5qzxx.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/client/client',
+        url: 'https://129.80.248.129:8080/api/Client/update',
         data: JSON.stringify({
             id: $("#idCli").val(),
             name: $("#nameCli").val(),
@@ -99,7 +99,7 @@ function actualizarInformacionCli() {
 function borrarInformacionCli(id) {
     $.ajax({
         method: 'DELETE',
-        url: 'https://g6fa7bce83865eb-yc6akd8hrlz5qzxx.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/client/client',
+        url: 'https://129.80.248.129:8080/api/Client/delete/'+id,
         data: JSON.stringify({ id }),
         contentType: "application/json",
         success: function (data) {
