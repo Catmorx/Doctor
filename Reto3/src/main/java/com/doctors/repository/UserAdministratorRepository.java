@@ -28,8 +28,13 @@ public class UserAdministratorRepository {
     }
 
     public boolean deleteUserAdministrator(Integer id) {
-        userAdministratorCrudRepository.deleteById(id);
-        return true;
+        try {
+            userAdministratorCrudRepository.deleteById(id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+
     }
 
     public UserAdministratorModel updateUserAdministrator(UserAdministratorModel userAdministratorModel) {

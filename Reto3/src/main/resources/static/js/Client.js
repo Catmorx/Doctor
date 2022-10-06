@@ -1,4 +1,4 @@
-var host = "http://localhost:8080/api";
+var host = "http://localhost:8081/api";
 
 function mostrarInformacionCli() {
     $.ajax({

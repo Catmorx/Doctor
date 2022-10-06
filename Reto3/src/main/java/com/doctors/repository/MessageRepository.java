@@ -27,8 +27,12 @@ public class MessageRepository {
     }
 
     public boolean deleteMessage(Integer idMessage) {
-        messageCrudRepository.deleteById(idMessage);
-        return true;
+        try {
+            messageCrudRepository.deleteById(idMessage);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 
     public MessageModel updateMessage(MessageModel messageModel) {

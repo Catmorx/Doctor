@@ -18,6 +18,7 @@ public class UserAdministratorController {
     private UserAdministratorService userAdministratorService;
 
     @GetMapping("/all")
+    @PostMapping("/all")
     public List<UserAdministratorModel> getAllUserAdministrators() {
         return (List<UserAdministratorModel>) userAdministratorService.getAllUserAdministrators();
     }
