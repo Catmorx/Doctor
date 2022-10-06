@@ -27,9 +27,9 @@ public class SpecialtyRepository {
         return specialtyCrudRepository.save(specialtyModel);
     }
 
-    public boolean deleteSpecialty(Integer id) {
+    public boolean deleteSpecialty(Integer specialty_id) {
         try {
-            specialtyCrudRepository.deleteById(id);
+            specialtyCrudRepository.deleteById(specialty_id);
             return true;
         }catch (Exception e){
             return false;
