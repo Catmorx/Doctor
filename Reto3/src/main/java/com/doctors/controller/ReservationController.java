@@ -40,7 +40,7 @@ public class ReservationController {
         return reservationService.saveReservation(reservationModel);
     }
 
-    @DeleteMapping("/delete/{idReservation}")
+    @DeleteMapping("/{idReservation}")
     public boolean deleteReservation(@PathVariable Integer idReservation) {
         reservationService.deleteReservation(idReservation);
         return true;

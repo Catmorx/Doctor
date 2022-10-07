@@ -40,7 +40,7 @@ public class DoctorController {
         return doctorService.saveDoctor(doctorModel);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public boolean deleteDoctor(@PathVariable Integer id) {
         doctorService.deleteDoctor(id);
         return true;

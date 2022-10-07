@@ -39,7 +39,7 @@ public class ScoreController {
         return scoreService.saveScore(scoreModel);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public boolean deleteReserveQualification(@PathVariable Integer id) {
         scoreService.deleteScore(id);
         return true;

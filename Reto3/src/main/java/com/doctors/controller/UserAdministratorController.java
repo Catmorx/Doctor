@@ -40,7 +40,7 @@ public class UserAdministratorController {
         return userAdministratorService.saveUserAdministrator(userAdministratorModel);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public boolean deleteUserAdministratorModel(@PathVariable Integer id) {
         userAdministratorService.deleteUserAdministrator(id);
         return true;
