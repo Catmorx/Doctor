@@ -41,6 +41,7 @@ public class DoctorController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean deleteDoctor(@PathVariable Integer id) {
         doctorService.deleteDoctor(id);
         return true;

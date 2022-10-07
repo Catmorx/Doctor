@@ -41,6 +41,7 @@ public class UserAdministratorController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean deleteUserAdministratorModel(@PathVariable Integer id) {
         userAdministratorService.deleteUserAdministrator(id);
         return true;

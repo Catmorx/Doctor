@@ -40,6 +40,7 @@ public class ScoreController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean deleteReserveQualification(@PathVariable Integer id) {
         scoreService.deleteScore(id);
         return true;
