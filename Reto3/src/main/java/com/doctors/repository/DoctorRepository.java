@@ -29,8 +29,12 @@ public class DoctorRepository {
     }
 
     public boolean deleteDoctor(Integer id) {
-        doctorCrudRepository.deleteById(id);
-        return true;
+        try {
+            doctorCrudRepository.deleteById(id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 
     /*

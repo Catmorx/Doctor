@@ -18,6 +18,7 @@ public class ReservationController {
     private ReservationService reservationService;
 
     @GetMapping("all")
+    @PostMapping("/all")
     public List<ReservationModel> getAllReservations() {
         return (List<ReservationModel>) reservationService.getAllReservations();
     }

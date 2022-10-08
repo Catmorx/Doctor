@@ -28,8 +28,13 @@ public class ReservationRepository {
     }
 
     public boolean deleteReservation(Integer id) {
-        reservationCrudRepository.deleteById(id);
-        return true;
+        try {
+            reservationCrudRepository.deleteById(id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+
     }
 
     public ReservationModel updateReservation(ReservationModel reservationModel) {

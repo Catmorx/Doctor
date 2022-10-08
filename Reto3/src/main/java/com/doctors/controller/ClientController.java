@@ -18,6 +18,7 @@ public class ClientController {
     private ClientService clientService;
 
     @GetMapping("/all")
+    @PostMapping("/all")
     public List<ClientModel> getAllClient() {
         return clientService.getAllClient();
     }
@@ -39,9 +40,9 @@ public class ClientController {
         return clientService.saveClient(clientModel);
     }
 
-    @DeleteMapping("/delete/{idCient}")
-    public boolean deleteClient(@PathVariable Integer idCient) {
-        return clientService.deleteClient(idCient);
+    @DeleteMapping("/delete/{idClient}")
+    public boolean deleteClient(@PathVariable Integer idClient) {
+        return clientService.deleteClient(idClient);
     }
 
     @PutMapping("/update")

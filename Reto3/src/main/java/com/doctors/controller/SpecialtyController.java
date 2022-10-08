@@ -17,6 +17,7 @@ public class SpecialtyController {
     private SpecialtyService specialtyService;
 
     @GetMapping("/all")
+    @PostMapping("/all")
     public List<SpecialtyModel> getAllSpecialty() {
         return specialtyService.getAllSpecialty();
     }

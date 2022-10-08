@@ -28,8 +28,13 @@ public class ScoreRepository {
     }
 
     public boolean deleteScore(Integer id) {
-        scoreCrudRepository.deleteById(id);
-        return true;
+        try {
+            scoreCrudRepository.deleteById(id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+
     }
     public ScoreModel updateScore(ScoreModel scoreModel) {
         if (scoreModel.getId() != null) {

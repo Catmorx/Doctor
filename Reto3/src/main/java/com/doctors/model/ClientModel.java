@@ -12,7 +12,6 @@ public class ClientModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idClient;
-
     @Column(name = "email", nullable = false, length = 45)
     private String email;
 

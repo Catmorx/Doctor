@@ -1,4 +1,4 @@
-var host = "http://localhost:8080/api";
+var host = "http://localhost:8081/api";
 
 function mostrarInformacionSpe() {
     $.ajax({
@@ -24,14 +24,14 @@ function tableRespuestaSpe(items) {
         myTableSpe += `<tr>`;
         myTableSpe += `<td>${items[i].name}</td>`;
         myTableSpe += `<td>${items[i].description}</td>`;
-        myTableSpe += `<td>${items[i].doctors[i].name}</td>`;
-        myTableSpe += `<td> <button onclick="finishActuDoc( ${items[i].id}, '${items[i].name}', '${items[i].doctors[i].name}', '${items[i].description}')" style="background-color:#7c65b1; border-color:#563856; color:white;">Change</button></td>`;
+        myTableSpe += `<td>${items[i].doctors.name}</td>`;
+        //myTableSpe += `<td> <button onclick="finishActuDoc( ${items[i].id}, '${items[i].name}', '${items[i].doctors[i].name}', '${items[i].description}')" style="background-color:#7c65b1; border-color:#563856; color:white;">Change</button></td>`;
         myTableSpe += `<td> <button onclick="borrarInformacionDoc(${items[i].id})" style="background-color:#7c65b1; border-color:#563856; color:white;">Delete</button></td>`;
         myTableSpe += `</tr>`;
         const element = items[i];
         $('#specialty').append(`<option value="${element.doctors.id}">${element.doctors.name}</option>`);
         $("#specialty").val("");
-        console.log(items[i]);
+        console.log(items[i].doctors[i].name);
     }
     $("#resultadoSpe").append(myTableSpe);
     myTableSpe = `</table>`;

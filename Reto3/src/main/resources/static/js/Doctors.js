@@ -1,4 +1,4 @@
-var host = "http://localhost:8080/api";
+var host = "http://localhost:8081/api";
 
 function mostrarInformacionDoc() {
     $.ajax({
@@ -7,7 +7,6 @@ function mostrarInformacionDoc() {
         dataType: "JSON",
         success: function (respuesta) {
             console.log(respuesta);
-
             tableRespuestaDoc(respuesta);
         }, error: function (e) {
             console.log(e);

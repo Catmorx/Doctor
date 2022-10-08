@@ -18,6 +18,7 @@ public class DoctorController {
     private DoctorService doctorService;
 
     @GetMapping("/all")
+    @PostMapping("/all")
     public List<DoctorModel> getAllDoctors() {
         return doctorService.getAllDoctors();
     }

@@ -28,8 +28,12 @@ public class SpecialtyRepository {
     }
 
     public boolean deleteSpecialty(Integer id) {
-        specialtyCrudRepository.deleteById(id);
-        return true;
+        try {
+            specialtyCrudRepository.deleteById(id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 
     public SpecialtyModel updateSpecialty(SpecialtyModel specialtyModel) {

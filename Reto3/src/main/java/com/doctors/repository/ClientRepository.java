@@ -27,8 +27,12 @@ public class ClientRepository {
     }
 
     public boolean deleteClient(Integer idClient) {
-        clientCrudRepository.deleteById(idClient);
-        return true;
+        try {
+            clientCrudRepository.deleteById(idClient);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 
     public ClientModel updateClient(ClientModel clientModel) {
