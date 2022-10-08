@@ -30,7 +30,7 @@ function tablaRespuestaCli(items) {
         myTableCli += `<td>${items[i].email}</td>`;
         myTableCli += `<td>${items[i].name}</td>`;
         myTableCli += `<td>${items[i].age}</td>`;
-        myTableCli += `<td> <button onclick="finishActuCli( ${items[i].idClient}, '${items[i].email}', '${items[i].password}','${items[i].name}', ${items[i].age} )" style="background-color:#7c65b1; border-color:#563856; color:white;">Change</button></td>`;
+        myTableCli += `<td> <button onclick="finishActuCli('${items[i].email}','${items[i].password}','${items[i].name}', ${items[i].age} )" style="background-color:#7c65b1; border-color:#563856; color:white;">Change</button></td>`;
         myTableCli += `<td> <button onclick="borrarInformacionCli(${items[i].idClient})" style="background-color:#7c65b1; border-color:#563856; color:white;">Delete</button></td>`;
         myTableCli += `</tr>`;
     }
@@ -43,7 +43,7 @@ function agregarInformacionCli() {
         type: "POST",
         url: host + '/Client/save',
         data: JSON.stringify({
-            id: $("#idCli").val(),
+            idClient: $("#idClient").val(),
             name: $("#nameCli").val(),
             email: $("#emailCli").val(),
             age: $("#ageCli").val(),
@@ -51,7 +51,7 @@ function agregarInformacionCli() {
         contentType: "application/json"
     }).done(function (data) {
         $("#resultadoCli").empty();
-        $("#idCli").val("");
+        $("#idClient").val("");
         $("#nameCli").val("");
         $("#emailCli").val("");
         $("#ageCli").val("");
@@ -65,7 +65,6 @@ function agregarInformacionCli() {
 function finishActuCli(id, email, password, name, age) {
     $("#idCli").val(id);
     $("#emailCli").val(email);
-    //$("#passwordCli").val(password);
     $("#nameCli").val(name);
     $("#ageCli").val(age);
 }
@@ -75,7 +74,7 @@ function actualizarInformacionCli() {
         method: 'PUT',
         url: host + '/Client/update',
         data: JSON.stringify({
-            id: $("#idCli").val(),
+            idClient: $("#idClient").val(),
             email: $("#emailCli").val(),
             password: $("#passwordCli").val(),
             name: $("#nameCli").val(),
@@ -84,7 +83,7 @@ function actualizarInformacionCli() {
         contentType: "application/JSON"
     }).done(function (data) {
         $("#resultadoCli").empty();
-        $("#idCli").val("");
+        $("#idClient").val("");
         $("#emailCli").val("");
         $("#passwordCli").val();
         $("#nameCli").val("");
@@ -100,7 +99,7 @@ function actualizarInformacionCli() {
 function borrarInformacionCli(id) {
     $.ajax({
         method: 'DELETE',
-        url: host + '/Client/delete/' + id,
+        url: host + '/Client/' + id,
         contentType: "application/json",
         success: function (data) {
             $("#resultadoCli").empty();

@@ -30,7 +30,7 @@ function tablaRespuestaAdmin(items) {
         myTableAdmin += `<td>${items[i].name}</td>`;
         myTableAdmin += `<td>${items[i].email}</td>`;
         myTableAdmin += `<td>${items[i].password}</td>`;
-        myTableAdmin += `<td> <button onclick="finishActuAdmin( ${items[i].id}, '${items[i].name}', '${items[i].email}','${items[i].password}')" class="button_admin">Change</button></td>`;
+        myTableAdmin += `<td> <button onclick="finishActuAdmin( '${items[i].name}', '${items[i].email}','${items[i].password}')" class="button_admin">Change</button></td>`;
         myTableAdmin += `<td> <button onclick="borrarInformacionAdmin(${items[i].id})" class="button_admin">Delete</button></td>`;
         myTableAdmin += `</tr>`;
     }
@@ -62,8 +62,7 @@ function agregarInformacionAdmin() {
     });
 }
 
-function finishActuAdmin(id, name, email, password) {
-    $("#idAdmin").val(id);
+function finishActuAdmin( name, email, password) {
     $("#nameAdmin").val(name);
     $("#emailAdmin").val(email);
     $("#passwordAdmin").val(password);
@@ -79,11 +78,9 @@ function actualizarInformacionAdmin() {
             email: $("#emailAdmin").val(),
             password: $("#passwordAdmin").val(),
         }),
-
         contentType: "application/JSON"
     }).done(function (data) {
         $("#resultadoAdmin").empty();
-        $("#idAdmin").val("");
         $("#emailAdmin").val("");
         $("#passwordAdmin").val();
         $("#nameAdmin").val("");
@@ -99,7 +96,7 @@ function actualizarInformacionAdmin() {
 function borrarInformacionAdmin(id) {
     $.ajax({
         method: 'DELETE',
-        url: host + '/Admin/delete/' + id,
+        url: host + '/Admin/' + id,
         contentType: "application/json",
         success: function (data) {
             $("#resultadoAdmin").empty();

@@ -24,14 +24,11 @@ function tableRespuestaSpe(items) {
         myTableSpe += `<tr>`;
         myTableSpe += `<td>${items[i].name}</td>`;
         myTableSpe += `<td>${items[i].description}</td>`;
-        myTableSpe += `<td>${items[i].doctors.name}</td>`;
-        //myTableSpe += `<td> <button onclick="finishActuDoc( ${items[i].id}, '${items[i].name}', '${items[i].doctors[i].name}', '${items[i].description}')" style="background-color:#7c65b1; border-color:#563856; color:white;">Change</button></td>`;
-        myTableSpe += `<td> <button onclick="borrarInformacionDoc(${items[i].id})" style="background-color:#7c65b1; border-color:#563856; color:white;">Delete</button></td>`;
+        myTableSpe += `<td>${items[i].doctors[1]}</td>`;
+        myTableSpe += `<td> <button onclick="finishActuSpe(${items[i].id},'${items[i].name}', '${items[i].description}')" style="background-color:#7c65b1; border-color:#563856; color:white;">Change</button></td>`;
+        myTableSpe += `<td> <button onclick="borrarInformacionSpe(${items[i].id})" style="background-color:#7c65b1; border-color:#563856; color:white;">Delete</button></td>`;
         myTableSpe += `</tr>`;
-        const element = items[i];
-        $('#specialty').append(`<option value="${element.doctors.id}">${element.doctors.name}</option>`);
-        $("#specialty").val("");
-        console.log(items[i].doctors[i].name);
+        
     }
     $("#resultadoSpe").append(myTableSpe);
     myTableSpe = `</table>`;
@@ -42,51 +39,49 @@ function agregarInformacionSpe() {
         type: "POST",
         url: host + "/Specialty/save",
         data: JSON.stringify({
-            id: $("#idDoc").val(),
-            specialty: $("#specialty").val(),
-            graduate_year: $("#graduate_year").val(),
-            department_id: $("#department").val(),
-            name: $("#nameDoc").val(),
+            id: $("#idSpe").val(),
+            name: $("#nameSpe").val(),
+            doctor: $("#doctor").val(),
             description: $("#description").val(),
         }),
         contentType: "application/json"
     }).done(function (data) {
-        $("#resultado").empty();
-        $("#specialty").val("");
-        $("#graduate_year").val("");
-        $("#department").val("");
-        $("#nameDoc").val("");
+        $("#resultadoSpe").empty();
+        $("#nameSpe").val("");
+        $("#doctor").val("");
         $("#description").val("");
-        mostrarInformacionDoc();
+        mostrarInformacionSpe();
         alert("Elementos de Specialty agregados");//imprimimos respuesta
     }).fail(function (e) {
         alert("Algo salió mal");
     });
 }
 
-function finishActuSpe(id, name, doctor, description) {
+function finishActuSpe(id, name, description) {
+    $("#idSpe").val(id);
     $("#nameSpe").val(name);
-    $("#doctor").val(doctor);
     $("#description").val(description);
 }
 
 function actualizarInformacionSpe() {
+
     $.ajax({
         method: 'PUT',
         url: host + '/Specialty/update',
         data: JSON.stringify({
-            id: $("#idDoc").val(),
+            id: $("#idSpe").val(),
             name: $("#nameSpe").val(),
             doctor: $("#doctor").val(),
             description: $("#description").val(),
         }),
         contentType: "application/JSON",
     }).done(function (data) {
-        $("#resultado").empty();
+        console.log(data);
+        $("#resultadoSpe").empty();
         $("#nameSpe").val("");
         $("#doctor").val("");
         $("#description").val("");
-        mostrarInformacionDoc();
+        mostrarInformacionSpe();
         alert("Elementos de Specialty actualizados");//imprimimos respuesta
     }).fail(function (e) {
         console.log(e);
@@ -98,8 +93,7 @@ function actualizarInformacionSpe() {
 function borrarInformacionSpe(id) {
     $.ajax({
         method: 'DELETE',
-        url: host + '/Specialty/delete/' + id,
-        data: JSON.stringify({id}),
+        url: host + '/Specialty/' + id,
         contentType: "application/JSON",
         success: function (data) {
             console.log(data);
@@ -109,7 +103,7 @@ function borrarInformacionSpe(id) {
             console.log(e);
             alert("Algo salió mal");
         }, complete: function () {
-            mostrarInformacionDoc();
+            mostrarInformacionSpe();
         }
     });
 }

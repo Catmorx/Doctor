@@ -25,14 +25,17 @@ function tablaRespuestaMes(items) {
     let myTableMes = `<table BORDER CELLPADDING=2 BORDERCOLOR='#7c65b1'><th scope='col'> MESSAGE </th><th>DOCTOR</th><th>CLIENT</th>`;
     for (let i = 0; i < items.length; i++) {
         myTableMes += `<tr>`;
-        myTableMes += `<td>${items[i].messageText}</td>`;
+        myTableMes += `<td>${items[i].messagetext}</td>`;
         myTableMes += `<td>${items[i].doctor.name}</td>`;
-        myTableMes += `<td>${items[i].client.name}</td>`;
-        myTableMes += `<td> <button onclick="finishActuMes('${items[i].messageText}','${items[i].doctor.name}','${items[i].client.name}')" style="background-color:#7c65b1; border-color:#563856; color:white;">Change</button></td>`;
+        myTableMes += `<td>${items[i].client}</td>`;
+        myTableMes += `<td> <button onclick="finishActuMes('${items[i].messagetext}')" style="background-color:#7c65b1; border-color:#563856; color:white;">Change</button></td>`;
         myTableMes += `<td> <button onclick="borrarInformacionMes(${items[i].idMessage})" style="background-color:#7c65b1; border-color:#563856; color:white;">Delete</button>`;
         myTableMes += `</tr>`;
-        console.log(items[i].idMessage)
-        const element = items[i];
+
+    }
+    for (let j = 0; j < items.length; j++){
+        console.log(items[j].idMessage)
+        const element = items[j];
         $('#client').append(`<option value="${element.client.id}">${element.client.name}</option>`);
         $("#client").val("");
         $('#doctor').append(`<option value="${element.doctor.id}">${element.doctor.name}</option>`);
@@ -47,14 +50,17 @@ function agregarInformacionMes() {
         type: "POST",
         url: host + "/Message/save",
         data: JSON.stringify({
-            id: $("#idMes").val(),
+            idMessage: $("#").val(),
             messagetext: $("#messagetext").val(),
+            client: $("#client").val(),
+            doctor: $("#doctor").val(),
         }),
         contentType: "application/json"
     }).done(function (data) {
         $("#resultadoMes").empty();
-        $("#idMes").val("");
         $("#messagetext").val("");
+        $("#client").val("");
+        $("#doctor").val("");
         mostrarInformacionMes();
         alert("Elementos de mensaje agregados");//imprimimos respuesta
     }).fail(function (e) {
@@ -63,8 +69,8 @@ function agregarInformacionMes() {
 }
 
 function finishActuMes(messagetext, doctor, client) {
-    $("#client").val(client);
     $("#messagetext").val(messagetext);
+    $("#client").val(client);
     $("#doctor").val(doctor);
 }
 
@@ -73,13 +79,16 @@ function actualizarInformacionMes() {
         method: 'PUT',
         url: host + '/Message/update',
         data: JSON.stringify({
-            id: $("#idMes").val(),
             messagetext: $("#messagetext").val(),
+            client: $("#client").val(),
+            doctor: $("#doctor").val(),
         }),
         contentType: "application/JSON"
     }).done(function (data) {
         $("#resultadoMes").empty();
         $("#messagetext").val("");
+        $("#client").val("");
+        $("#doctor").val("");
         mostrarInformacionMes();
         alert("Elementos de mensaje actualizados");//imprimimos respuesta
     }).fail(function (e) {
@@ -91,8 +100,7 @@ function actualizarInformacionMes() {
 function borrarInformacionMes(id) {
     $.ajax({
         method: 'DELETE',
-        url: host + 'Message/delete/' + id,
-        data: JSON.stringify({id}),
+        url: host + 'Message/' + id,
         contentType: "application/json",
         success: function (data) {
             $("#resultadoMes").empty();

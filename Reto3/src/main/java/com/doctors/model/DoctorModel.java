@@ -15,8 +15,6 @@ public class DoctorModel implements Serializable {
     @Column(name = "name", nullable = false, length = 45)
     private String name;
 
-    //@Column(name= "specialty", nullable = false, length = 45)
-    //private String specialty;
     @Column(name = "department", nullable = false, length = 45)
     private String department;
     @Column(name = "year", nullable = false, length = 4)
@@ -34,8 +32,6 @@ public class DoctorModel implements Serializable {
     @OneToMany(mappedBy = "doctor")
     @JsonIgnoreProperties({"doctor", "client"})
     private List<ReservationModel> reservations;
-
-    //one de mensaje y reservacion
     public DoctorModel() {
     }
 
