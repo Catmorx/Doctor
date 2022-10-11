@@ -1,2 +1,0 @@
-hago prueba para verificar que si esté trabajando 
-en mi rama desde mi equipo.
