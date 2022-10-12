@@ -15,7 +15,7 @@ public class DoctorService {
     private DoctorRepository doctorRepository;
 
     public List<DoctorModel> getAllDoctors() {
-        return (List<DoctorModel>) doctorRepository.getAllDoctors();
+        return doctorRepository.getAllDoctors();
     }
 
     public Optional<DoctorModel> getDoctor(Integer id) {

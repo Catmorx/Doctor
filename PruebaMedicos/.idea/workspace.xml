@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5470b8a0-f778-4295-be17-7a70b9aafd42" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Reto3/src/main/resources/static/Message.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Reto3/src/main/resources/static/Message.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reto3/src/main/resources/static/js/Doctors.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Reto3/src/main/resources/static/js/Doctors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reto3/src/main/resources/static/js/Message.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Reto3/src/main/resources/static/js/Message.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2FsEr0ZDb0YEEdGDnnZqx6LHqVY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/Pro/RETOS"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5470b8a0-f778-4295-be17-7a70b9aafd42" name="Changes" comment="" />
+      <created>1665272586554</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1665272586554</updated>
+      <workItem from="1665272588351" duration="147000" />
+      <workItem from="1665275341835" duration="2060000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -1,6 +1,8 @@
 package com.doctors.controller;
 
 import com.doctors.model.ReservationModel;
+import com.doctors.model.reports.ReportClient;
+import com.doctors.model.reports.ReportStatus;
 import com.doctors.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,13 +22,13 @@ public class ReservationController {
     @GetMapping("all")
     @PostMapping("/all")
     public List<ReservationModel> getAllReservations() {
-        return (List<ReservationModel>) reservationService.getAllReservations();
+        return reservationService.getAllReservations();
     }
 
     @PostMapping("/all")
     @ResponseStatus(HttpStatus.CREATED)
     public List<ReservationModel> getAllReservations2() {
-        return (List<ReservationModel>) reservationService.getAllReservations();
+        return reservationService.getAllReservations();
     }
 
     @GetMapping("{idReservation}")
@@ -51,5 +53,19 @@ public class ReservationController {
     @ResponseStatus(HttpStatus.CREATED)
     public ReservationModel updateReservation(@RequestBody ReservationModel reservationModel) {
         return reservationService.updateReservation(reservationModel);
+    }
+    @GetMapping("/report-dates/{startDate}/{finishDate}")
+    public List<ReservationModel> getReservationPeriod(@PathVariable String startDate, @PathVariable String finishDate){
+        return  reservationService.getReservationPeriod(startDate, finishDate);
+    }
+
+    @GetMapping("/report-clients")
+    public List<ReportClient> getTopClient(){
+        return reservationService.getTopClient();
+    }
+
+    @GetMapping("/report-status")
+    public ReportStatus getReportStatus(){
+        return reservationService.getReportStatus();
     }
 }

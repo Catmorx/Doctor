@@ -10,9 +10,6 @@ function mostrarInformacionMes() {
         }, error: function (e) {
             console.log(e);
             alert("Algo salió mal");
-        }, error: function (e) {
-            console.log(e);
-            alert("Algo salió mal");
         }
     });
 }
@@ -25,10 +22,11 @@ function tablaRespuestaMes(items) {
     let myTableMes = `<table BORDER CELLPADDING=2 BORDERCOLOR='#7c65b1'><th scope='col'> MESSAGE </th><th>DOCTOR</th><th>CLIENT</th>`;
     for (let i = 0; i < items.length; i++) {
         myTableMes += `<tr>`;
+        myTableMes += `<td>${items[i].idMessage}</td>`;
         myTableMes += `<td>${items[i].messagetext}</td>`;
         myTableMes += `<td>${items[i].doctor.name}</td>`;
         myTableMes += `<td>${items[i].client}</td>`;
-        myTableMes += `<td> <button onclick="finishActuMes('${items[i].messagetext}')" style="background-color:#7c65b1; border-color:#563856; color:white;">Change</button></td>`;
+        myTableMes += `<td> <button onclick="finishActuMes(${items[i].idMessage},'${items[i].messagetext}')" style="background-color:#7c65b1; border-color:#563856; color:white;">Change</button></td>`;
         myTableMes += `<td> <button onclick="borrarInformacionMes(${items[i].idMessage})" style="background-color:#7c65b1; border-color:#563856; color:white;">Delete</button>`;
         myTableMes += `</tr>`;
 
@@ -50,8 +48,8 @@ function agregarInformacionMes() {
         type: "POST",
         url: host + "/Message/save",
         data: JSON.stringify({
-            idMessage: $("#").val(),
-            messagetext: $("#messagetext").val(),
+            idMessage: $("#idMes").val(),
+            messageText: $("#messagetext").val(),
             client: $("#client").val(),
             doctor: $("#doctor").val(),
         }),
@@ -68,10 +66,9 @@ function agregarInformacionMes() {
     });
 }
 
-function finishActuMes(messagetext, doctor, client) {
+function finishActuMes(id, messagetext) {
+    $("#idMes").val(id);
     $("#messagetext").val(messagetext);
-    $("#client").val(client);
-    $("#doctor").val(doctor);
 }
 
 function actualizarInformacionMes() {
@@ -80,12 +77,12 @@ function actualizarInformacionMes() {
         url: host + '/Message/update',
         data: JSON.stringify({
             messagetext: $("#messagetext").val(),
-            client: $("#client").val(),
-            doctor: $("#doctor").val(),
+            idMessage: $("#idMes").val(),
         }),
         contentType: "application/JSON"
     }).done(function (data) {
         $("#resultadoMes").empty();
+        $("#idMes").val("");
         $("#messagetext").val("");
         $("#client").val("");
         $("#doctor").val("");

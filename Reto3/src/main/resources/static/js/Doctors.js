@@ -57,7 +57,7 @@ function agregarInformacionDoc() {
     }).done(function (data) {
         $("#resultadoDoc").empty();
         $("#idDoc").val(""),
-        $("#specialty").val("");
+            $("#specialty").val("");
         $("#graduate_year").val("");
         $("#department").val("");
         $("#nameDoc").val("");
@@ -71,7 +71,7 @@ function agregarInformacionDoc() {
 
 function finishActuDoc(id, name, department, graduate_year, description) {
     $("#idDoc").val(id),
-    $("#nameDoc").val(name);
+        $("#nameDoc").val(name);
     $("#department").val(department);
     $("#graduate_year").val(graduate_year);
     $("#description").val(description);

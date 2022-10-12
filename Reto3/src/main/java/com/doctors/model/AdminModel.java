@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "userAdmistrator")
-public class UserAdministratorModel implements Serializable {
+public class AdminModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,16 +14,16 @@ public class UserAdministratorModel implements Serializable {
     private String email;
     private String password;
 
-    public UserAdministratorModel() {
+    public AdminModel() {
     }
 
-    public UserAdministratorModel(String name, String email, String password) {
+    public AdminModel(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
     }
 
-    public UserAdministratorModel(Integer id, String name, String email, String password) {
+    public AdminModel(Integer id, String name, String email, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
